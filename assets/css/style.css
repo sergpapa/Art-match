@@ -33,14 +33,26 @@
     grid-template-columns: auto auto auto;
 }
 
+.column {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+
 /* ---------------------  Images and Display ---*/
+
+header > div {
+    display: flex;
+    justify-content: space-between;
+}
 
 .logo {
     width: 250px;
     height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
+    margin: 0 auto;
 }
 
 /* ---------------------  Global ---*/
@@ -62,9 +74,9 @@ nav {
     justify-content: space-between;
     flex-flow: row;
     align-items: baseline;
-        border-radius: 10px;
-        list-style-type: none;
-        padding: 0;
+    border-radius: 10px;
+    list-style-type: none;
+    padding: 0;
 }
 
 .list-item a {
@@ -76,4 +88,37 @@ nav {
 
 .list-item a:hover {
     text-decoration: underline;
+}
+
+.card {
+    display: flex;
+    flex: 1 1 auto;
+    border: 1px solid #6b717e;
+    border-radius: 8%;
+    flex-flow: column;
+    min-width: 140px;
+    min-height: 140px;
+    margin: 10px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+p i{
+    font-size: 40px;
+    color: #efaac4;
+}
+
+h2 {
+    color: #6b717e;
+}
+
+.sound-toggler {
+    float: right;
+    margin: 25px;
+    color: #efaac4;
+}
+
+.sound-off {
+    display: none;
 }

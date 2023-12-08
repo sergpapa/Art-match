@@ -14,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--  Fontawesome -->
+    <script src="https://kit.fontawesome.com/0d939d98c3.js" crossorigin="anonymous"></script>
     
     <!--  css -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -25,53 +28,68 @@
     <header>
         <div>
             <img class="logo" src="assets/images/art-match-high-resolution-logo-transparent.svg" alt="logo">
+            <div class="sound-toggler">
+                <div class="sound-on"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="sound-off"><i class="fa-solid fa-volume-xmark"></i></div>
+            </div>
         </div>
         <nav>
             <ul class="nav-ul">
                 <li class="list-item"><a href="index.html">Home</a></li>
                 <li class="list-item"><a href="#">Rules</a></li>
-                <li class="list-item"><a href="#">Leaderboard</a></li>
+                <li class="list-item"><a href="#">Board</a></li>
             </ul>
         </nav>
     </header>
 
     <!--  Game -->
     <section class="flex-container">
-        <div>
-            <h2>Level</h2>
-            <h2>Score</h2>
+        <div class="column">
+            <div id="level">
+                <h2>Level: </h2>
+                <h2>1</h2>
+            </div>
+            <div class="score">
+                <h2>Score: </h2>
+                <h2>000</h2>
+            </div>
         </div>
         <div class="grid-container">
             <div class="card">
-                <p>1</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>2</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>3</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>4</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>5</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>6</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>7</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>8</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
             <div class="card">
-                <p>9</p>
+                <p><i class="fa-solid fa-star"></i></p>
             </div>
         </div>
-        <div>
-            <h2>Lives</h2>
+        <div class="column">
+            <div class="lives">
+                <h2>Lives</h2>
+                <p><i class="fa-solid fa-heart"></i></p>
+                <p><i class="fa-solid fa-heart"></i></p>
+                <p><i class="fa-solid fa-heart"></i></p>
+            </div>
         </div>
     </section>
     
