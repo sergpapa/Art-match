@@ -110,6 +110,17 @@ nav {
     color: #efaac4;
 }
 
+.sound-toggler div {
+    border-radius: 50%;
+    background-color: #d4dccd;
+    padding: 5px 8.25px;
+}
+
+.sound-toggler div:hover {
+    background-color: #6b717e;
+
+}
+
 .sound-off {
     display: inline-block;
     font-size: 26px;
