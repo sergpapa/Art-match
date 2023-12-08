@@ -51,6 +51,8 @@ h2 {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
+    justify-content: center;
+    text-align: center;
 }
 
 .column {
@@ -64,7 +66,6 @@ h2 {
 
 header>div {
     display: flex;
-    justify-content: space-between;
 }
 
 .logo {
@@ -72,6 +73,7 @@ header>div {
     height: auto;
     display: inline-block;
     margin: 0 auto;
+    padding-left: 7%;
 }
 
 nav {
@@ -190,4 +192,57 @@ nav {
 p i{
     font-size: 40px;
     color: #efaac4;
+}
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        width: 200px;
+    }
+
+    .list-item a {
+        font-size: 20px;
+    }
+
+    .sound-on, .sound-off {
+        font-size: 20px;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .column {
+        flex-direction: row;
+    }
+
+    .column div {
+        margin: 0 30px;
+    }
+
+    .column h2,
+    .column p {
+        display: inline-block;
+        margin: 0 8px;
+    }
+
+    .flip-card {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .flip-card {
+            width: 80px;
+            height: 80px;
+        }
+
+    .logo {
+        width: 140px;
+        padding: 0;
+    }
+
+    header>div {
+        display: block;
+    }
 }
