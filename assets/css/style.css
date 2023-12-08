@@ -1,0 +1,79 @@
+/* ---------------------  Colors ---*/
+
+.bg-color-state-gray {
+    background-color: #6b717e;
+}
+
+.bg-color-lavender-pink {
+    background-color: #efaac4;
+}
+
+.bg-color-pink {
+    background-color: #ffc4d1;
+}
+
+.bg-color-misty-rose {
+    background-color: #ffe8e1;
+}
+
+.bg-color-alabaster {
+    background-color: #d4dccd;
+}
+
+/* ---------------------  Containers ---*/
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+/* ---------------------  Images and Display ---*/
+
+.logo {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------------------  Global ---*/
+
+body {
+    background-color: #ffe8e1;
+    font-family: 'Amatic SC', sans-serif;
+}
+
+nav {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.nav-ul {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    align-items: baseline;
+        border-radius: 10px;
+        list-style-type: none;
+        padding: 0;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: #6b717e;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.list-item a:hover {
+    text-decoration: underline;
+}
