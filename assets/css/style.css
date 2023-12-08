@@ -9,6 +9,15 @@ h2 {
     color: #6b717e;
 }
 
+.active {
+    text-decoration: overline;
+    font-weight: 700;
+}
+
+.active:hover {
+    text-decoration: overline #efaac4;
+}
+
 /* ---------------------  Colors ---*/
 
 .bg-color-state-gray {
@@ -90,7 +99,7 @@ nav {
 }
 
 .list-item a:hover {
-    text-decoration: underline;
+    color: #efaac4
 }
 
 /* ------------------- Sound toggler */
