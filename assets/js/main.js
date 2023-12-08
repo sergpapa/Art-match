@@ -20,3 +20,31 @@ function fetchImageData() {
 };
 
 fetchImageData();
+
+let game  = {
+    "score": 0,
+    "level": 1
+}
+
+function startGame() {
+    game.score = 0;
+    game.level = 1;
+}
+
+function level() {
+    game.level ++;
+}
+
+function fillCards()
+
+function showCards()
+
+function playerMove()
+
+function checkIfMatch()
+
+function loseHealth()
+
+function addScore()
+
+function winLevel()
