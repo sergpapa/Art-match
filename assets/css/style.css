@@ -270,13 +270,9 @@ p i{
             width: 180px;
             height: 180px;
     }
-
+    
     .flip-card-back {
-        background-color: #efaac4;
-        transform: rotateY(180deg);
-        border-radius: 8%;
-        overflow: hidden;
-        width: 180px;
-        height: 180px;
+            width: 180px;
+            height: 180px;
     }
 }
