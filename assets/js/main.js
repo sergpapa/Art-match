@@ -33,7 +33,7 @@ function fillCards() {
 
     for (let i = 1; i <= game['level-count']; i++) {
         cardList.push(i);
-    }
+    };
 
     if (cardList.length % 2 !== 0) {
         let randomCard;
@@ -64,7 +64,7 @@ function fillCards() {
         cardList.splice(randomCard, 1);
     }
 
-    while (cardList.length > 0) {
+    for (let i = 0; i < cardList.length; i++) {
         let randomPair = [];
 
         do {
@@ -105,8 +105,7 @@ function fillCards() {
                 console.log(`#card-${randomPair[0]}`);
                 console.log(`#card-${randomPair[1]}`);
             }
-        );
-
+        )
     }
 };
 
