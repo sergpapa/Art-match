@@ -47,6 +47,7 @@ function fillCards() {
 
         $(`#card-${randomCard} .flip-card-back`).html("");
 
+        /*
         $.when(
             $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
         ).then(
@@ -59,7 +60,8 @@ function fillCards() {
 
                 $(`#card-${randomCard} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
             }
-        ); 
+        );
+        */
 
         cardList.splice(randomCard, 1);
     }
@@ -68,19 +70,18 @@ function fillCards() {
         let randomPair = [];
 
         do {
-            randomNum = Math.floor(Math.random() * (cardList.length - 1)) + 1;
+            let randomNum = Math.floor(Math.random() * (cardList.length - 1)) + 1;
             randomPair = [randomNum, randomNum];
         } while (randomPair[0] === randomPair[1]);
 
-        for (i of randomPair) {
-            let indexToRemove = cardList.indexOf(randomPair[i]);
+        for (j of randomPair) {
+            let indexToRemove = cardList.indexOf(j);
 
             cardList.splice(indexToRemove, 1);
         }
 
         console.log(randomPair);
         console.log(cardList);
-
 
         let randomPage = Math.floor(Math.random() * 9398);
         let randomArt = Math.floor(Math.random() * 12);
@@ -89,6 +90,7 @@ function fillCards() {
         $(`#card-${randomPair[1]} .flip-card-back`).html("");
 
 
+        /*
         $.when(
             $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
         ).then(
@@ -106,7 +108,8 @@ function fillCards() {
                 console.log(`#card-${randomPair[1]}`);
             }
         )
-    }
+        */
+    };
 };
 
 fillCards();
