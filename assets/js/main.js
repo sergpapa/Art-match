@@ -47,7 +47,7 @@ function fillCards() {
 
         $(`#card-${randomCard} .flip-card-back`).html("");
 
-        /*$.when(
+        $.when(
             $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
         ).then(
             function (response) {
@@ -59,7 +59,7 @@ function fillCards() {
 
                 $(`#card-${randomCard} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
             }
-        ); */
+        ); 
 
         cardList.splice(randomCard, 1);
     }
@@ -89,7 +89,7 @@ function fillCards() {
         $(`#card-${randomPair[1]} .flip-card-back`).html("");
 
 
-        /*$.when(
+        $.when(
             $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
         ).then(
             function (response) {
@@ -105,7 +105,7 @@ function fillCards() {
                 console.log(`#card-${randomPair[0]}`);
                 console.log(`#card-${randomPair[1]}`);
             }
-        );*/
+        );
 
     }
 };
