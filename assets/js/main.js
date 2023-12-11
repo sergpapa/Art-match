@@ -42,16 +42,12 @@ function fillCards() {
             randomCard = Math.floor(Math.random() * cardList.length);
         } while (randomCard === 0);
 
-        console.log("random Card: ", randomCard);
-
-
         let randomPage = Math.floor(Math.random() * 9398);
         let randomArt = Math.floor(Math.random() * 12);
 
-
         $(`#card-${randomCard} .flip-card-back`).html("");
-        
-        $.when(
+
+        /*$.when(
             $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
         ).then(
             function (response) {
@@ -60,42 +56,58 @@ function fillCards() {
 
                 console.log(artwork);
                 console.log(artwork.data[randomArt]);
-                console.log(artwork.config.iiif_url);
-                console.log(artwork.data[randomArt].image_id);
 
                 $(`#card-${randomCard} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
-
-                console.log(artwork.config.iiif_url + "/" + artwork.data[randomArt].image_id + iiif);
             }
-        );
+        ); */
+
+        cardList.splice(randomCard, 1);
     }
 
+    while (cardList.length > 0) {
+        let randomPair = [];
+
+        do {
+            randomNum = Math.floor(Math.random() * (cardList.length - 1)) + 1;
+            randomPair = [randomNum, randomNum];
+        } while (randomPair[0] === randomPair[1]);
+
+        for (i of randomPair) {
+            let indexToRemove = cardList.indexOf(randomPair[i]);
+
+            cardList.splice(indexToRemove, 1);
+        }
+
+        console.log(randomPair);
+        console.log(cardList);
 
 
-    for (let i; i < game['level-count']; i++) {
-        $(`#card-${i + 1}`).html("");
+        let randomPage = Math.floor(Math.random() * 9398);
+        let randomArt = Math.floor(Math.random() * 12);
 
-        let randomArt = Math.floor(Math.random() * 100000)
+        $(`#card-${randomPair[0]} .flip-card-back`).html("");
+        $(`#card-${randomPair[1]} .flip-card-back`).html("");
 
-        console.log(randomArt);
 
-        $.when(
-            $.getJSON(`https://api.artic.edu/api/v1/artworks/${randomArt}`),
+        /*$.when(
+            $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
         ).then(
             function (response) {
                 var artwork = response;
                 const iiif = "/full/843,/0/default.jpg";
 
-                console.log(artwork.data.id);
-                console.log(artwork.config.iiif_url);
-                console.log(artwork.data.image_id);
+                console.log(artwork);
+                console.log(artwork.data[randomArt]);
 
-                $(`#card-${i + 1}`).html(`<img src="${artwork.config.iiif_url}/${artwork.data.image_id}${iiif}">`);
+                $(`#card-${randomPair[0]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+                $(`#card-${randomPair[1]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
 
-                console.log(artwork.config.iiif_url + "/" + artwork.data.image_id + iiif);
+                console.log(`#card-${randomPair[0]}`);
+                console.log(`#card-${randomPair[1]}`);
             }
-        );
-    };
+        );*/
+
+    }
 };
 
 fillCards();
