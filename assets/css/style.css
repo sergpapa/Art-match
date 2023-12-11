@@ -187,6 +187,23 @@ nav {
     background-color: #efaac4;
     transform: rotateY(180deg);
     border-radius: 8%;
+    overflow: hidden;
+    width: 140px;
+    height: 140px;
+}
+
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+    margin: 0;
+    object-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 p i{
@@ -252,4 +269,5 @@ p i{
             background-color: transparent;
             width: 180px;
             height: 180px;
+    }
 }
