@@ -18,6 +18,17 @@ h2 {
     text-decoration: overline #efaac4;
 }
 
+.center {
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.change-cursor {
+    cursor: wait;
+}
+
 /* ---------------------  Colors ---*/
 
 .bg-color-state-gray {
@@ -177,10 +188,6 @@ nav {
 
 .flip-card-front i {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 .flip-card-back {
@@ -228,6 +235,10 @@ p i{
     background-color: #efaac4;
 }
 
+/* --------   Progress Bar -- By https: //codepen.io/manz/pen/GRxJgZZ  */
+
+
+/* ------- Media Quesries ---*/
 
 @media only screen and (max-width: 600px) {
     .logo {
