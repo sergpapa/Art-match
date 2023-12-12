@@ -166,7 +166,7 @@ nav {
     transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {    /* --- to add this onclick method on my js file*/
+.flip {    /* --- to add this onclick method on my js file*/
   transform: rotateY(180deg);
 }
 

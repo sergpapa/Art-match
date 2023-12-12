@@ -1,7 +1,9 @@
 let game = {
     "score": 0,
     "level": 1,
-    "level-count": 9
+    "levelCount": 9,
+    "status": false,
+    "openCards": 0
 };
 
 $("#start-game").on("click", function() {
@@ -12,6 +14,7 @@ $("#start-game").on("click", function() {
 function startGame() {
     game.score = 0;
     game.level = 1;
+    game.status = true;
 
     $("#level").html(`
         <h2>Level: </h2>
@@ -24,6 +27,22 @@ function startGame() {
     `);
 
     createPairs();
+    console.log(game.openCards);
+
+    if (game.status) {
+        $(".flip-card, .flip-card-inner").on("click", function () {
+            $(this).toggleClass("flip");
+            game.openCards = game.openCards + 1;
+            console.log(game.openCards);
+
+            if (game.openCards > 5) {
+                $(".flip-card, .flip-card-inner").removeClass("flip");
+                game.openCards = 0;                
+            }
+        });
+    }
+
+
 };
 
 function level() {
@@ -39,7 +58,7 @@ function createPairs() {
 
     let cardList = [];
 
-    for (let i = 1; i <= game['level-count']; i++) {    // Populating the cardList. Depending on the level the number of cards will vary.
+    for (let i = 1; i <= game.levelCount; i++) {    // Populating the cardList. Depending on the level the number of cards will vary.
         cardList.push(i);
     };
 
@@ -110,3 +129,6 @@ function loadArtwork(pair) {
             }}
     );
 }
+
+
+
