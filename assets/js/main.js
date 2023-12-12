@@ -4,6 +4,8 @@ let game = {
     "level-count": 9
 };
 
+$("start-game").on("click", startGame());  // click button to start game
+
 function startGame() {
     game.score = 0;
     game.level = 1;
@@ -17,10 +19,12 @@ function startGame() {
         <h2>Score: </h2>
         <h2>${game.score}</h2>
     `);
+
+    createPairs();
 };
 
 function level() {
-    game.level ++;
+    game.level++;
 
     $("#level").html(`
         <h2>Level: </h2>
@@ -28,7 +32,7 @@ function level() {
     `);
 };
 
-function fillCards() {
+function createPairs() {
     let cardList = [];
 
     for (let i = 1; i <= game['level-count']; i++) {    // Populating the cardList. Depending on the level the number of cards will vary.
@@ -40,30 +44,25 @@ function fillCards() {
     for (let j = 0; j < numOfPairs; j++) {
         let pair = [];
         let pairs = [];
-        
+
         do {
-            pair = [Math.floor(Math.random() * cardList.length), Math.floor(Math.random() * cardList.length)]
+            pair = [Math.floor(Math.random() * cardList.length), Math.floor(Math.random() * cardList.length)];
         } while (pair[0] === pair[1]);
 
         pair.sort().reverse();
-        pairs.push([cardList[pair[0]], cardList[pair[1]]]);   
+        pairs.push([cardList[pair[0]], cardList[pair[1]]]);
 
         cardList.splice(pair[0], 1);
         cardList.splice(pair[1], 1);
 
-        let randomPage = Math.floor(Math.random() * 9398);
-        let randomArt = Math.floor(Math.random() * 12);
-
         for (pair of pairs) {
             loadArtwork(pair);
-        } 
+        }
     }
 
     if (cardList.lenght !== 0) {
-        loadArtwork(cardList)
+        loadArtwork(cardList);
     }
-
-    
 }
 
 function loadArtwork(pair, retries = 3) {
@@ -85,21 +84,21 @@ function loadArtwork(pair, retries = 3) {
             //console.log(artwork);
             //console.log(artwork.data[randomArt]);
 
-            console.log(pair);
-
             $(`#card-${pair[0]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
             if (pair.length > 1) {
                 $(`#card-${pair[1]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
             }
 
         }, function (errorResponse) {
-            if (errorResponse.status === 404 || errorResponse.status === 403) {
-
+            console.error("Error loading artwork:", errorResponse);
+            if (retries > 0) {
+                // Retry if there's an error
+                console.error(`Error loading artwork. Retrying... (${retries} retries left)`);
+                loadArtwork(pair, retries - 1);
+            } else {
+                console.error("Max retries reached. Unable to load artwork.");
+                // Handle error when max retries are reached
             }
-
         }
-    )
-
+    );
 }
-
-fillCards();

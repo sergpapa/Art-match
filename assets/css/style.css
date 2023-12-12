@@ -211,6 +211,24 @@ p i{
     color: #efaac4;
 }
 
+#start-game {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font-size: 46px;
+    font-weight: 700;
+    font-family: 'Amatic SC', sans-serif;
+    border-radius: 20px;
+    background-color: #EDE07E;
+    color: #6b717e;
+    margin-bottom: 50px;
+}
+
+#start-game:hover {
+    background-color: #efaac4;
+}
+
+
 @media only screen and (max-width: 600px) {
     .logo {
         width: 200px;
