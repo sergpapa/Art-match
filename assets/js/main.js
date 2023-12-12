@@ -55,52 +55,51 @@ function fillCards() {
         let randomArt = Math.floor(Math.random() * 12);
 
         for (pair of pairs) {
-            $(`#card-${pair[0]} .flip-card-back`).html("");
-            $(`#card-${pair[1]} .flip-card-back`).html("");
-
-            $.when(
-                $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
-            ).then(
-                function (response) {
-                    var artwork = response;
-                    const iiif = "/full/843,/0/default.jpg";
-
-                    //console.log(artwork);
-                    //console.log(artwork.data[randomArt]);
-
-                    console.log(pair);
-
-                    $(`#card-${pair[0]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
-                    $(`#card-${pair[1]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
-
-                }
-            )
+            loadArtwork(pair);
         } 
     }
 
     if (cardList.lenght !== 0) {
-        let randomPage = Math.floor(Math.random() * 9398);
-        let randomArt = Math.floor(Math.random() * 12);
-
-        $(`#card-${cardList[0]} .flip-card-back`).html("");
-
-        $.when(
-            $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
-        ).then(
-            function (response) {
-                var artwork = response;
-                const iiif = "/full/843,/0/default.jpg";
-
-                //console.log(artwork);
-                //console.log(artwork.data[randomArt]);
-
-                $(`#card-${cardList[0]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
-            }
-        );
-        console.log(cardList[0]);
+        loadArtwork(cardList)
     }
 
     
+}
+
+function loadArtwork(pair, retries = 3) {
+    let randomPage = Math.floor(Math.random() * 9398);
+    let randomArt = Math.floor(Math.random() * 12);
+
+    $(`#card-${pair[0]} .flip-card-back`).html("");
+    if (pair.lenght > 1) {
+        $(`#card-${pair[1]} .flip-card-back`).html("");
+    }
+
+    $.when(
+        $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
+    ).then(
+        function (response) {
+            var artwork = response;
+            const iiif = "/full/843,/0/default.jpg";
+
+            //console.log(artwork);
+            //console.log(artwork.data[randomArt]);
+
+            console.log(pair);
+
+            $(`#card-${pair[0]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+            if (pair.length > 1) {
+                $(`#card-${pair[1]} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+            }
+
+        }, function (errorResponse) {
+            if (errorResponse.status === 404 || errorResponse.status === 403) {
+
+            }
+
+        }
+    )
+
 }
 
 fillCards();
