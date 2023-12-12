@@ -4,7 +4,10 @@ let game = {
     "level-count": 9
 };
 
-$("#start-game").on("click", startGame);  // click button to start game
+$("#start-game").on("click", function() {
+    startGame();
+    $("#start-game").hide();
+});  // click button to start game
 
 function startGame() {
     game.score = 0;
@@ -32,8 +35,7 @@ function level() {
     `);
 };
 
-function createPairs() { 
-    $("html").css("cursor", "wait");
+function createPairs() {
 
     let cardList = [];
 
@@ -67,9 +69,12 @@ function createPairs() {
         loadArtwork(cardList);
     };
 
+
 }
 
 function loadArtwork(pair) {
+    $("html").css("cursor", "wait");
+
     let randomPage = Math.floor(Math.random() * 9398);
     let randomArt = Math.floor(Math.random() * 12);
 
@@ -79,7 +84,7 @@ function loadArtwork(pair) {
     }
 
     $.when(
-        $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`),
+        $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
     ).then(
         function (response) {
             var artwork = response;
@@ -105,17 +110,3 @@ function loadArtwork(pair) {
             }}
     );
 }
-
-/*
-function (errorResponse) {
-            console.error("Error loading artwork:", errorResponse);
-            if (retries > 0) {
-                // Retry if there's an error
-                console.error(`Error loading artwork. Retrying... (${retries} retries left)`);
-                loadArtwork(pair, retries - 1);
-            } else {
-                console.error("Max retries reached. Unable to load artwork.");
-                // Handle error when max retries are reached
-            }
-        }
-*/
