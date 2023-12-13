@@ -10,13 +10,15 @@ let player = {
     "score": 0,
     "choice1": "",
     "choice2": "",
-    "lives": 3
+    "lives": 3,
+    "win": 0
 }
 
 function createCards() {
     for (let i = 0; i < game.cardCount; i++) {
         let card = {};
         card.id = `card-${i}`;
+        card.img = "";
         card.code = 
         `
         <div id="${card.id}" class="flip-card">
@@ -70,8 +72,8 @@ function playerMove() {
         }
         if (player.choice1 !== "" && player.choice2 !== "") {
             checkPair(player.choice1, player.choice2);
+            gameStatus()
         }
-
     });
 }
 
@@ -81,11 +83,14 @@ function checkPair(choice1, choice2) {
 
     if (choice1.img === choice2.img) {
         player.score += 100;
+        player.win ++;
         showScore();
+
         cards.splice(choice1, 1);
         cards.splice(choice2, 1);
     } else {
         $(".flip-card", ".flip-card-inner").removeClass("flip");
+        player.lives = player.lives - 1;
     }
 
     player.choice1 = "";
@@ -98,6 +103,18 @@ function showScore() {
         <h2>Score:</h2>
         <h2>${player.score}</h2>`
     )
+}
+
+function gameStatus() {
+    if (player.lives < 0) {
+        setTimeout(function () {
+            alert("Game Over");
+        }, 500); 
+    } else if (player.win >= Math.floor(game.cardCount/2)) {
+        setTimeout(function () {
+            alert("You won the game");
+        }, 500); 
+    }
 }
 
 $("#start-game").on("click", startGame);
