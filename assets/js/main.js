@@ -113,14 +113,26 @@ function showScore() {
     )
 }
 
+function showLevel() {
+    $("#level").html(
+        `
+        <h2>Level:</h2>
+        <h2>${game.level}</h2>`
+    );
+}
+
 function gameStatus() {
     if (player.lives < 0) {
         setTimeout(function () {
             alert("Game Over");
+            // add score to leaderboard
+            //start new game
         }, 500); 
     } else if (player.win >= Math.floor(game.cardCount/2)) {
         setTimeout(function () {
-            alert("You won the game");
+            alert("You won the level");
+            game.level ++;
+
         }, 500); 
     }
 }
