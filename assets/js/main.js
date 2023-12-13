@@ -57,21 +57,48 @@ function showCards(cards) {
         });
     });
 }
+
 function playerMove() {
     $(".flip-card").on("click", function () {
         $(this).toggleClass("flip");
         $(this).children(".flip-card-inner").toggleClass("flip");
+
         if (player.choice1 === "") {
             player.choice1 = this.id;
         } else if (player.choice2 === "") {
             player.choice2 = this.id;
-        } else {
-            checkPair(player.choice1, player.choice2);
-            $(".flip-card", ".flip-card-inner").removeClass("flip");
         }
+        if (player.choice1 !== "" && player.choice2 !== "") {
+            checkPair(player.choice1, player.choice2);
+        }
+
     });
 }
 
+function checkPair(choice1, choice2) {
+    choice1 = cards.find(card => card.id === player.choice1);
+    choice2 = cards.find(card => card.id === player.choice1);
+
+    if (choice1.img === choice2.img) {
+        player.score += 100;
+        showScore();
+        cards.splice(choice1, 1);
+        cards.splice(choice2, 1);
+    } else {
+        $(".flip-card", ".flip-card-inner").removeClass("flip");
+    }
+
+    player.choice1 = "";
+    player.choice2 = "";
+}
+
+function showScore() {
+    $("#score").html(
+        `
+        <h2>Score:</h2>
+        <h2>${player.score}</h2>`
+    )
+}
 
 $("#start-game").on("click", startGame);
 
