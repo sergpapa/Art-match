@@ -79,15 +79,23 @@ function playerMove() {
 
 function checkPair(choice1, choice2) {
     choice1 = cards.find(card => card.id === player.choice1);
-    choice2 = cards.find(card => card.id === player.choice1);
+    choice2 = cards.find(card => card.id === player.choice2);
+
+    const cardsRemaining = cards.filter( (card) => {
+        return card !== choice1 && card !== choice2;
+    })
+
+    console.log(choice1.id);
+    console.log(choice2.id);
 
     if (choice1.img === choice2.img) {
         player.score += 100;
         player.win ++;
         showScore();
 
-        cards.splice(choice1, 1);
-        cards.splice(choice2, 1);
+        cards = cardsRemaining;
+        console.log(cards);
+        
     } else {
         $(".flip-card", ".flip-card-inner").removeClass("flip");
         player.lives = player.lives - 1;
