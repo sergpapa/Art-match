@@ -37,10 +37,47 @@ function createCards() {
     $("#game").html(levelLayout);
 }
 
+function showCards(cards) {
+    return new Promise((resolve) => {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                $(`#${card.id}`).addClass("flip");
+                $(`#${card.id} .flip-card-inner`).addClass("flip");
+
+                setTimeout(() => {
+                    $(`#${card.id}`).removeClass("flip");
+                    $(`#${card.id} .flip-card-inner`).removeClass("flip");
+
+                    if (index === cards.length - 1) {
+                        resolve();
+                    }
+
+                }, 1500); 
+            }, 2000 * index); 
+        });
+    });
+}
+function playerMove() {
+    $(".flip-card").on("click", function () {
+        $(this).toggleClass("flip");
+        $(this).children(".flip-card-inner").toggleClass("flip");
+        if (player.choice1 === "") {
+            player.choice1 = this.id;
+        } else if (player.choice2 === "") {
+            player.choice2 = this.id;
+        } else {
+            checkPair(player.choice1, player.choice2);
+            $(".flip-card", ".flip-card-inner").removeClass("flip");
+        }
+    });
+}
+
+
 $("#start-game").on("click", startGame);
 
 function startGame() {
     $("#start-game").addClass("no-display");
     $("#game").css("opacity", "1");
     createCards();
+    showCards(cards).then(() => playerMove());
 }
