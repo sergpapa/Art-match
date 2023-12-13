@@ -1,6 +1,6 @@
 let game = {
     "level": 1,
-    "cardCount": 9,
+    "cardCount": 9,     // change to 9
     "inProgress": false
 }
 
@@ -132,8 +132,17 @@ function gameStatus() {
         setTimeout(function () {
             alert("You won the level");
             game.level ++;
-
+            showLevel();
         }, 500); 
+    }
+}
+
+function startLevel() {
+    if (game.level > 2) {
+        game.cardCount = 12;
+        $(".grid-container").css("grid-template-columns", "auto auto auto auto");
+    } else if (game.level > 4) {
+        game.cardCount = 16;
     }
 }
 
@@ -142,6 +151,7 @@ $("#start-game").on("click", startGame);
 function startGame() {
     $("#start-game").addClass("no-display");
     $("#game").css("opacity", "1");
+    startLevel();
     createCards();
     showCards(cards).then(() => playerMove());
 }

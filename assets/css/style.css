@@ -65,6 +65,7 @@ h2 {
 
 .grid-container {
     display: grid;
+    flex-wrap: wrap;
     grid-template-columns: auto auto auto;
     justify-content: center;
     text-align: center;
