@@ -29,6 +29,10 @@ h2 {
     cursor: wait;
 }
 
+.no-display {
+    display: none;
+}
+
 /* ---------------------  Colors ---*/
 
 .bg-color-state-gray {
@@ -64,6 +68,7 @@ h2 {
     grid-template-columns: auto auto auto;
     justify-content: center;
     text-align: center;
+    opacity: 0.5;
 }
 
 .column {
@@ -148,6 +153,7 @@ nav {
 /* ------------------- flip Cards -- https: //www.w3schools.com/howto/howto_css_flip_card.asp */
 
 .flip-card {
+    position: relative;
     background-color: transparent;
     width: 140px;
     height: 140px;
@@ -168,6 +174,10 @@ nav {
 
 .flip {    /* --- to add this onclick method on my js file*/
   transform: rotateY(180deg);
+}
+
+.selectCorrectly {
+    transform: rotateY(180deg);
 }
 
 .flip-card-front,
@@ -219,6 +229,8 @@ p i{
 }
 
 #start-game {
+    position: absolute;
+    top: 50%;
     width: auto;
     height: auto;
     padding: 10px;
