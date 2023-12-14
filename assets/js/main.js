@@ -134,6 +134,7 @@ function checkPair(choice1, choice2) {
     } else {
         $(".flip-card", ".flip-card-inner").removeClass("flip");
         player.lives = player.lives - 1;
+        $(`#life-${player.lives}`).hide("slow");
     }
 
     player.choice1 = "";
@@ -157,7 +158,7 @@ function showLevel() {
 }
 
 function gameStatus() {
-    if (player.lives < 0) {
+    if (player.lives <= 0) {
         setTimeout(function () {
             alert("Game Over");
             // add score to leaderboard
