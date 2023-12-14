@@ -19,6 +19,9 @@ function createCards() {
         let card = {};
         card.id = `card-${i}`;
         card.img = "";
+        card.title = "";
+        card.artist = "";
+        card.date = "";
         card.code = 
         `
         <div id="${card.id}" class="flip-card">
@@ -70,7 +73,7 @@ function createPairs(cards, ) {
     }
 }
 
-function loadArtwork(pair, showCards) {
+function loadArtwork(pair) {
     $("html").css("cursor", "wait");
 
     let randomPage = Math.floor(Math.random() * 9398);
@@ -85,15 +88,25 @@ function loadArtwork(pair, showCards) {
         $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
     ).then(
         function (response) {
-            var artwork = response;
+            let artwork = response;
             const iiif = "/full/843,/0/default.jpg";
 
             //console.log(artwork);
-            //console.log(artwork.data[randomArt]);
+            console.log(artwork.data[randomArt]);
 
-            $(`#${pair[0].id} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+            pair[0].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
+
+            $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
+            pair[0].title = `${artwork.data[randomArt].title}`;
+            pair[0].artist = `${artwork.data[randomArt].artist_title}`;
+            pair[0].date = `${artwork.data[randomArt].date_end}`;
+
             if (pair.length > 1) {
-                $(`#${pair[1].id} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+                pair[1].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
+                $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}">`);
+                pair[1].title = `${artwork.data[randomArt].title}`;
+                pair[1].artist = `${artwork.data[randomArt].artist_title}`;
+                pair[1].date = `${artwork.data[randomArt].date_end}`;
             };
 
             console.log(`Pairing Successfull`);
@@ -169,12 +182,12 @@ function checkPair(choice1, choice2) {
         let correctPair = 
         `
         <div class="box">
-            <h1>Stary Night</h1>
+            <h1>${choice1.title}</h1>
             <div class="details">
-                <p>Artist</p>
-                <p>Year</p>
+                <p>${choice1.artist}</p>
+                <p>${choice1.date}</p>
             </div>
-            <div class="img"></div>
+            <img src="${choice1.img}">
             <h2>+100</h2>
         </div>
         `

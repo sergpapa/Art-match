@@ -273,9 +273,10 @@ p i{
 .box h1 {
     font-size: 50px;
     margin: 0px;
+    text-align: center;
 }
 
-.img {
+.box img {
     width: 250px;
     height: 250px;
     border: 1px solid black;
