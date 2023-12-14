@@ -60,6 +60,21 @@ function showCards(cards) {
     });
 }
 
+function beginMessage() {
+    let beginMessage =
+        `
+        <div class="box">
+            <h1>Begin!</h1>
+        </div>
+       `;
+    $(".flex-container").append(beginMessage);
+    $(".box").hide();
+    $(".box").fadeIn("slow");
+    $(".box").on("click", function () {
+        $(".box").fadeOut(300, function () { $(this).remove(); });
+    });
+}
+
 function playerMove() {
     $(".flip-card").on("click", function () {
         $(this).toggleClass("flip");
@@ -89,6 +104,26 @@ function checkPair(choice1, choice2) {
     console.log(choice2.id);
 
     if (choice1.img === choice2.img) {
+        let correctPair = 
+        `
+        <div class="box">
+            <h1>Stary Night</h1>
+            <div class="details">
+                <p>Artist</p>
+                <p>Year</p>
+            </div>
+            <div class="img"></div>
+            <h2>+100</h2>
+        </div>
+        `
+
+        $(".flex-container").append(correctPair);
+        $(".box").hide();
+        $(".box").fadeIn("slow");
+        $(".box").on("click", function() {
+            $(".box").fadeOut(300, function () { $(this).remove(); });
+        })
+
         player.score += 100;
         player.win ++;
         showScore();
@@ -130,6 +165,7 @@ function gameStatus() {
         }, 500); 
     } else if (player.win >= Math.floor(game.cardCount/2)) {
         setTimeout(function () {
+            $(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
             alert("You won the level");
             game.level ++;
             showLevel();
@@ -149,7 +185,7 @@ function startLevel() {
     }
 
     createCards();
-    showCards(cards).then(() => playerMove());
+    showCards(cards).then(() => beginMessage()).then(() => playerMove());
 }
 
 $("#start-game").on("click", startGame);
@@ -159,3 +195,5 @@ function startGame() {
     $("#game").css("opacity", "1");
     startLevel();
 }
+
+

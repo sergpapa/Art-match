@@ -193,6 +193,7 @@ nav {
 
 .flip-card-front {
     border: 1px solid #6b717e;
+    box-shadow: 0px 0px 10px -1px #6b717e;
     border-radius: 8%;
     background-color: #d4dccd;
 }
@@ -229,6 +230,8 @@ p i{
     color: #efaac4;
 }
 
+/* --------   in game displays --  */
+
 #start-game {
     position: absolute;
     top: 50%;
@@ -249,6 +252,51 @@ p i{
 #start-game:hover {
     background-color: #efaac4;
 }
+
+.box {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffc4d1;
+    border: 2px solid #546446;
+    border-radius: 8%;
+    box-shadow: 0px 0px 10px -3px #546446;
+    width: 50vw;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.box h1 {
+    font-size: 50px;
+    margin: 0px;
+}
+
+.img {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 8%;
+}
+
+.box h2 {
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.details p {
+    display: inline-block;
+    font-size: 26px;
+    margin: 10px 10px;
+}
+
+
 
 /* --------   Progress Bar -- By https: //codepen.io/manz/pen/GRxJgZZ  */
 
