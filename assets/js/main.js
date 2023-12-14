@@ -187,7 +187,7 @@ function checkPair(choice1, choice2) {
                 <p>${choice1.artist}</p>
                 <p>${choice1.date}</p>
             </div>
-            <img src="${choice1.img}">
+            <img src="${choice1.img}" alt="image of ${choice1.title}">
             <h2>+100</h2>
         </div>
         `
