@@ -22,6 +22,7 @@ function createCards() {
         card.title = "";
         card.artist = "";
         card.date = "";
+        card.won = false;
         card.code = 
         `
         <div id="${card.id}" class="flip-card">
@@ -63,7 +64,6 @@ function createPairs(cards, ) {
         cardsTemp.splice(pair[1], 1);
 
         for (pair of pairs) {
-            console.log(pair);
             loadArtwork(pair);
         } 
     }
@@ -91,9 +91,6 @@ function loadArtwork(pair) {
             let artwork = response;
             const iiif = "/full/843,/0/default.jpg";
 
-            //console.log(artwork);
-            console.log(artwork.data[randomArt]);
-
             pair[0].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
 
             $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
@@ -118,7 +115,6 @@ function showCards(cards) {
     return new Promise((resolve) => {
         cards.forEach((card, index) => {
             setTimeout(() => {
-                $(`#${card.id}`).addClass("flip");
                 $(`#${card.id} .flip-card-inner`).addClass("flip");
 
                 setTimeout(() => {
@@ -152,7 +148,6 @@ function beginMessage() {
 
 function playerMove() {
     $(".flip-card").on("click", function () {
-        $(this).toggleClass("flip");
         $(this).children(".flip-card-inner").toggleClass("flip");
 
         if (player.choice1 === "") {
@@ -179,6 +174,10 @@ function checkPair(choice1, choice2) {
     console.log(choice2.id);
 
     if (choice1.img === choice2.img) {
+
+        choice1.won = true;
+        choice2.won = true;
+
         let correctPair = 
         `
         <div class="box">
@@ -207,7 +206,13 @@ function checkPair(choice1, choice2) {
         console.log(cards);
         
     } else {
-        $(".flip-card", ".flip-card-inner").removeClass("flip");
+        setTimeout(function () { 
+            for (item of cards) {
+                if (!item.won) {
+                    $(`#${item.id}`).children(".flip-card-inner").removeClass("flip")
+                }
+            }
+         }, 1000);
         player.lives = player.lives - 1;
         $(`#life-${player.lives}`).hide("slow");
     }
