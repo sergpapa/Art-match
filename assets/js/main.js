@@ -148,7 +148,7 @@ function beginMessage() {
 
 function playerMove() {
     $(".flip-card").on("click", function () {
-        $(this).children(".flip-card-inner").toggleClass("flip");
+        $(this).children(".flip-card-inner").addClass("flip");
 
         if (player.choice1 === "") {
             player.choice1 = this.id;
@@ -166,9 +166,9 @@ function checkPair(choice1, choice2) {
     choice1 = cards.find(card => card.id === player.choice1);
     choice2 = cards.find(card => card.id === player.choice2);
 
-    const cardsRemaining = cards.filter( (card) => {
-        return card !== choice1 && card !== choice2;
-    })
+    //const cardsRemaining = cards.filter( (card) => {
+    //    return card !== choice1 && card !== choice2;
+    //})
 
     console.log(choice1.id);
     console.log(choice2.id);
@@ -202,7 +202,7 @@ function checkPair(choice1, choice2) {
         player.win ++;
         showScore();
 
-        cards = cardsRemaining;
+        //cards = cardsRemaining;
         console.log(cards);
         
     } else {
