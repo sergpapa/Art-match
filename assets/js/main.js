@@ -33,10 +33,72 @@ function createCards() {
     }
 
     let levelLayout = "";
-    for (card of cards) {
-        levelLayout = levelLayout + card.code;
+    for (item of cards) {
+        levelLayout = levelLayout + item.code;
     }
     $("#game").html(levelLayout);
+
+    createPairs(cards)
+    showCards(cards).then(() => beginMessage()).then(() => playerMove());
+}
+
+function createPairs(cards, ) {
+    let cardsTemp = [...cards];
+    let numOfPairs = Math.floor(cards.length / 2);
+
+    for (let j = 0; j < numOfPairs; j++) {
+        let pairs = [];
+        let pair = [];
+        do {
+            pair = [Math.floor(Math.random() * cardsTemp.length), Math.floor(Math.random() * cardsTemp.length)];
+        } while (pair[0] === pair[1]);
+
+        pair.sort().reverse();
+        pairs.push([cardsTemp[pair[0]], cardsTemp[pair[1]]]);
+
+        cardsTemp.splice(pair[0], 1);
+        cardsTemp.splice(pair[1], 1);
+
+        for (pair of pairs) {
+            console.log(pair);
+            loadArtwork(pair);
+        } 
+    }
+    if (cardsTemp.length > 0) {
+        let remainder = [cardsTemp[0]];
+        loadArtwork(remainder);
+    }
+}
+
+function loadArtwork(pair, showCards) {
+    $("html").css("cursor", "wait");
+
+    let randomPage = Math.floor(Math.random() * 9398);
+    let randomArt = Math.floor(Math.random() * 12);
+
+    $(`#${pair[0].id} .flip-card-back`).html("");
+    if (pair.length > 1) {
+        $(`#${pair[1].id} .flip-card-back`).html("");
+    }
+
+    $.when(
+        $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
+    ).then(
+        function (response) {
+            var artwork = response;
+            const iiif = "/full/843,/0/default.jpg";
+
+            //console.log(artwork);
+            //console.log(artwork.data[randomArt]);
+
+            $(`#${pair[0].id} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+            if (pair.length > 1) {
+                $(`#${pair[1].id} .flip-card-back`).html(`<img src="${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}">`);
+            };
+
+            console.log(`Pairing Successfull`);
+        }
+    );
 }
 
 function showCards(cards) {
@@ -186,7 +248,7 @@ function startLevel() {
     }
 
     createCards();
-    showCards(cards).then(() => beginMessage()).then(() => playerMove());
+
 }
 
 $("#start-game").on("click", startGame);

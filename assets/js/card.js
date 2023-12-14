@@ -43,13 +43,7 @@ function level() {
 
 function createPairs() {
 
-    let cardList = [];
-
-    for (let i = 1; i <= game.levelCount; i++) {    // Populating the cardList. Depending on the level the number of cards will vary.
-        cardList.push(i);
-    };
-
-    let numOfPairs = Math.floor(cardList.length / 2);
+    let numOfPairs = Math.floor(cards.length / 2);
 
     for (let j = 0; j < numOfPairs; j++) {
         let pair = [];
@@ -60,10 +54,10 @@ function createPairs() {
         } while (pair[0] === pair[1]);
 
         pair.sort().reverse();
-        pairs.push([cardList[pair[0]], cardList[pair[1]]]);
+        pairs.push([cards[pair[0]], cards[pair[1]]]);
 
-        cardList.splice(pair[0], 1);
-        cardList.splice(pair[1], 1);
+        cards.splice(pair[0], 1);
+        cards.splice(pair[1], 1);
 
         for (pair of pairs) {
             console.log("Began filling cards");
@@ -71,8 +65,8 @@ function createPairs() {
         }
     }
 
-    if (cardList.lenght !== 0) {
-        loadArtwork(cardList);
+    if (cards.lenght !== 0) {
+        loadArtwork(cards);
     };
 
 
