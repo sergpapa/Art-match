@@ -149,15 +149,17 @@ function beginMessage() {
 function playerMove() {
     $(".flip-card").on("click", function () {
         $(this).children(".flip-card-inner").addClass("flip");
+        
+        let clickedCard = cards.find(card => card.id === this.id);   // fixed issue with flipped cards counting again as choices
 
-        if (player.choice1 === "") {
+        if (player.choice1 === "" && clickedCard.won === false) {
             player.choice1 = this.id;
-        } else if (player.choice2 === "") {
+        } else if (player.choice2 === "" && clickedCard.won === false) {
             player.choice2 = this.id;
         }
         if (player.choice1 !== "" && player.choice2 !== "") {
             checkPair(player.choice1, player.choice2);
-            gameStatus()
+            gameStatus();
         }
     });
 }
