@@ -18,7 +18,7 @@ scWrong.src = "assets/tunes/wrong.mp3";
 scWrong.preload = 'auto';
 
 var scCorrect = new Audio();
-scCorrect.src = "assets/tunes/correct.mp3";
+scCorrect.src = "assets/tunes/correct-answer.mp3";
 scCorrect.preload = 'auto';
 
 var scSelect = new Audio();
@@ -34,6 +34,15 @@ scFlip.src = "assets/tunes/flip.mp3";
 scFlip.preload = 'auto';
 scFlip.volume = 0.2;
 
+var scWinLevel = new Audio();
+scFlip.src = "assets/tunes/win-level.mp3";
+scFlip.preload = 'auto';
+scFlip.volume = 0.2;
+
+var scSoundtrack = new Audio();
+scFlip.src = "assets/tunes/glossy-Coma-Media.mp3";  // https://pixabay.com/music/
+scFlip.preload = 'auto';
+scFlip.volume = 0.2;
 
 function createCards() {
     $("#game").html("");
