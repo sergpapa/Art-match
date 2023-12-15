@@ -91,11 +91,13 @@ function loadArtwork(pair) {
     let loadingMessage =  
     `
     <div class="box">
-        <h1>Loading
-        <i class="fa-solid fa-circle fa-bounce"></i>
-        <i class="fa-solid fa-circle fa-bounce"></i>
-        <i class="fa-solid fa-circle fa-bounce"></i>
-        </h1>
+        <div class="box-inner">
+            <h1>Loading
+            <i class="fa-solid fa-circle fa-bounce"></i>
+            <i class="fa-solid fa-circle fa-bounce"></i>
+            <i class="fa-solid fa-circle fa-bounce"></i>
+            </h1>
+        </div>
     </div>`
 
     $(".flex-container").append(loadingMessage);
@@ -165,10 +167,12 @@ function message(message) {
     let messageToAppend =
         `
         <div class="box">
-            <h1>${message}</h1>
+            <div class="box-inner">
+                <h1>${message}</h1>
+            </div>
         </div>
        `;
-    $(".flex-container").append(messageToAppend);
+    $(".box").append(messageToAppend);
     $(".box").hide();
     $(".box").fadeIn("slow");
     $(".box").on("click", function () {
@@ -206,13 +210,15 @@ function checkPair(choice1, choice2) {
         let correctPair = 
         `
         <div class="box">
-            <h1>${choice1.title}</h1>
-            <div class="details">
-                <p>${choice1.artist}</p>
-                <p>${choice1.date}</p>
+            <div class="box-inner">
+                <h1>${choice1.title}</h1>
+                <div class="details">
+                    <p>${choice1.artist}</p>
+                    <p>${choice1.date}</p>
+                </div>
+                <img src="${choice1.img}" alt="image of ${choice1.title}">
+                <h2>+100</h2>
             </div>
-            <img src="${choice1.img}" alt="image of ${choice1.title}">
-            <h2>+100</h2>
         </div>
         `
 

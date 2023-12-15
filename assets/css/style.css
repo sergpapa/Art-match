@@ -207,8 +207,6 @@ nav {
     transform: rotateY(180deg);
     border-radius: 8%;
     overflow: hidden;
-    width: 140px;
-    height: 140px;
 }
 
 .flip-card-back img {
@@ -233,20 +231,12 @@ p i{
 /* --------   in game displays --  */
 
 #start-game {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
-    padding: 10px;
     font-size: 46px;
     font-weight: 700;
     font-family: 'Amatic SC', sans-serif;
-    border-radius: 20px;
-    background-color: #EDE07E;
+    background-color: #ffc4d1;
     color: #6b717e;
-    margin-bottom: 50px;
+    border: none;
 }
 
 #start-game:hover {
@@ -255,8 +245,6 @@ p i{
 
 .box {
     position: fixed;
-    display: flex;
-    flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -264,11 +252,17 @@ p i{
     border: 2px solid #6b717e;
     border-radius: 8%;
     box-shadow: 0px 0px 10px -3px #6b717e;
-    width: 50vw;
-    height: 60vh;
+    width: auto;
+    height: auto;
+    color: #6b717e;
+}
+
+.box .box-inner {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #6b717e;
 }
 
 .box h1 {
@@ -335,10 +329,6 @@ p i{
 
     .column {
         flex-direction: row;
-    }
-
-    .column div {
-        margin: 0 30px;
     }
 
     .column h2,
