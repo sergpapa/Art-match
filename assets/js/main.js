@@ -13,6 +13,28 @@ let player = {
     "win": 0
 }
 
+var scWrong = new Audio();
+scWrong.src = "assets/tunes/wrong.mp3";
+scWrong.preload = 'auto';
+
+var scCorrect = new Audio();
+scCorrect.src = "assets/tunes/correct.mp3";
+scCorrect.preload = 'auto';
+
+var scSelect = new Audio();
+scSelect.src = "assets/tunes/select.mp3";
+scSelect.preload = 'auto';
+
+var scGameOver = new Audio();
+scGameOver.src = "assets/tunes/game-over.mp3";
+scGameOver.preload = 'auto';
+
+var scFlip = new Audio();
+scFlip.src = "assets/tunes/flip.mp3";
+scFlip.preload = 'auto';
+scFlip.volume = 0.2;
+
+
 function createCards() {
     $("#game").html("");
 
@@ -54,6 +76,23 @@ function createPairs(cards, ) {
         let cardsTemp = [...cards];
         let numOfPairs = Math.floor(cards.length / 2);
 
+        $("html").css("cursor", "wait");
+        let loadingMessage =
+        `
+        <div class="box">
+            <div class="box-inner">
+                <h1>Loading
+                <i class="fa-solid fa-circle fa-bounce"></i>
+                <i class="fa-solid fa-circle fa-bounce"></i>
+                <i class="fa-solid fa-circle fa-bounce"></i>
+                </h1>
+            </div>
+        </div>`;
+
+        $(".flex-container").append(loadingMessage);
+        $(".box").hide();
+        $(".box").fadeIn("slow");
+
         let promises = [];
 
         for (let j = 0; j < numOfPairs; j++) {
@@ -86,24 +125,7 @@ function createPairs(cards, ) {
     });
 }
 
-function loadArtwork(pair) {
-    $("html").css("cursor", "wait");
-    let loadingMessage =  
-    `
-    <div class="box">
-        <div class="box-inner">
-            <h1>Loading
-            <i class="fa-solid fa-circle fa-bounce"></i>
-            <i class="fa-solid fa-circle fa-bounce"></i>
-            <i class="fa-solid fa-circle fa-bounce"></i>
-            </h1>
-        </div>
-    </div>`
-
-    $(".flex-container").append(loadingMessage);
-    $(".box").hide();
-    $(".box").fadeIn("slow");
-   
+function loadArtwork(pair) {   
     return new Promise((resolve) => {
 
         let randomPage = Math.floor(Math.random() * 9398);
@@ -148,10 +170,12 @@ function showCards(cards) {
         cards.forEach((card, index) => {
             setTimeout(() => {
                 $(`#${card.id} .flip-card-inner`).addClass("flip");
+                playTune(scFlip);
 
                 setTimeout(() => {
-                    $(`#${card.id}`).removeClass("flip");
+                    //$(`#${card.id}`).removeClass("flip");
                     $(`#${card.id} .flip-card-inner`).removeClass("flip");
+                    playTune(scFlip);
 
                     if (index === cards.length - 1) {
                         resolve();
@@ -180,6 +204,10 @@ function message(message) {
     });
 }
 
+function playTune(tune) {
+    tune.play();
+} 
+
 function playerMove() {
     $(".flip-card").on("click", function () {
         $(this).children(".flip-card-inner").addClass("flip");
@@ -187,6 +215,7 @@ function playerMove() {
         let clickedCard = cards.find(card => card.id === this.id);   // fixed issue with flipped cards counting again as choices
 
         if (player.choice1 === "" && clickedCard.won === false) {
+            playTune(scSelect);
             player.choice1 = this.id;
         } else if (player.choice2 === "" && clickedCard.won === false) {
             player.choice2 = this.id;
@@ -203,6 +232,7 @@ function checkPair(choice1, choice2) {
     choice2 = cards.find(card => card.id === player.choice2);
 
     if (choice1.img === choice2.img) {
+        playTune(scCorrect);
 
         choice1.won = true;
         choice2.won = true;
@@ -234,6 +264,7 @@ function checkPair(choice1, choice2) {
         showScore();
 
     } else {
+        playTune(scWrong);
         setTimeout(function () { 
             for (item of cards) {
                 if (!item.won) {
@@ -268,13 +299,13 @@ function showLevel() {
 function gameStatus() {
     if (player.lives <= 0) {
         setTimeout(function () {
+            playTune(scGameOver)
             message("Game Over");
             $(".box").append(`<h2>Score: ${player.score}</h2>`);
             $(".box").append(`<p class="message">Press to start a new game!</>`);
 
             $(window).on("click", startGame);
             // add score to leaderboard
-            //start new game
         }, 500); 
     } else if (player.win >= Math.floor(game.cardCount/2)) {
         setTimeout(function () {
@@ -304,7 +335,11 @@ function startLevel() {
 
 }
 
-$("#start-game").on("click", startGame);   // press start to begin game
+$("#start-game").on("click", function() {
+    playTune(scSelect);
+    startGame();
+});   // press start to begin game
+
 
 function startGame() {
     $("#start-game").addClass("no-display");
