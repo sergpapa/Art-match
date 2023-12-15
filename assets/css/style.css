@@ -261,13 +261,14 @@ p i{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffc4d1;
-    border: 2px solid #546446;
+    border: 2px solid #6b717e;
     border-radius: 8%;
-    box-shadow: 0px 0px 10px -3px #546446;
+    box-shadow: 0px 0px 10px -3px #6b717e;
     width: 50vw;
     height: 60vh;
     align-items: center;
     justify-content: center;
+    color: #6b717e;
 }
 
 .box h1 {
@@ -291,13 +292,24 @@ p i{
     font-weight: 700;
 }
 
+.box i {
+    font-size: 12px;
+    margin: 0 5px;
+}
+
 .details p {
     display: inline-block;
     font-size: 26px;
     margin: 10px 10px;
 }
 
-
+.message {
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 26px;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 700;
+}
 
 /* --------   Progress Bar -- By https: //codepen.io/manz/pen/GRxJgZZ  */
 

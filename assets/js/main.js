@@ -14,6 +14,8 @@ let player = {
 }
 
 function createCards() {
+    $("#game").html("");
+
     for (let i = 0; i < game.cardCount; i++) {
         let card = {};
         card.id = `card-${i}`;
@@ -43,10 +45,9 @@ function createCards() {
 
     createPairs(cards).then(() => {
         console.log('done');
-        showCards(cards).then(() => beginMessage()).then(() => playerMove());
+        showCards(cards).then(() => message("Begin!")).then(() => playerMove());
     });
 }
-
 
 function createPairs(cards, ) {
     return new Promise((resolve) => {
@@ -78,6 +79,8 @@ function createPairs(cards, ) {
         }
 
         Promise.all(promises).then(() => {
+            $("html").css("cursor", "pointer");
+            $(".box").remove();
             resolve();
         });
     });
@@ -85,7 +88,20 @@ function createPairs(cards, ) {
 
 function loadArtwork(pair) {
     $("html").css("cursor", "wait");
+    let loadingMessage =  
+    `
+    <div class="box">
+        <h1>Loading
+        <i class="fa-solid fa-circle fa-bounce"></i>
+        <i class="fa-solid fa-circle fa-bounce"></i>
+        <i class="fa-solid fa-circle fa-bounce"></i>
+        </h1>
+    </div>`
 
+    $(".flex-container").append(loadingMessage);
+    $(".box").hide();
+    $(".box").fadeIn("slow");
+   
     return new Promise((resolve) => {
 
         let randomPage = Math.floor(Math.random() * 9398);
@@ -101,7 +117,7 @@ function loadArtwork(pair) {
         ).then(
             function (response) {
                 let artwork = response;
-                const iiif = "/full/843,/0/default.jpg";
+                const iiif = "/full/400,/0/default.jpg";    // change image size
 
                 pair[0].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
 
@@ -145,14 +161,14 @@ function showCards(cards) {
     });
 }
 
-function beginMessage() {
-    let beginMessage =
+function message(message) {
+    let messageToAppend =
         `
         <div class="box">
-            <h1>Begin!</h1>
+            <h1>${message}</h1>
         </div>
        `;
-    $(".flex-container").append(beginMessage);
+    $(".flex-container").append(messageToAppend);
     $(".box").hide();
     $(".box").fadeIn("slow");
     $(".box").on("click", function () {
@@ -181,13 +197,6 @@ function playerMove() {
 function checkPair(choice1, choice2) {
     choice1 = cards.find(card => card.id === player.choice1);
     choice2 = cards.find(card => card.id === player.choice2);
-
-    //const cardsRemaining = cards.filter( (card) => {
-    //    return card !== choice1 && card !== choice2;
-    //})
-
-    console.log(choice1.id);
-    console.log(choice2.id);
 
     if (choice1.img === choice2.img) {
 
@@ -218,9 +227,6 @@ function checkPair(choice1, choice2) {
         player.win ++;
         showScore();
 
-        //cards = cardsRemaining;
-        console.log(cards);
-        
     } else {
         setTimeout(function () { 
             for (item of cards) {
@@ -256,7 +262,11 @@ function showLevel() {
 function gameStatus() {
     if (player.lives <= 0) {
         setTimeout(function () {
-            alert("Game Over");
+            message("Game Over");
+            $(".box").append(`<h2>Score: ${player.score}</h2>`);
+            $(".box").append(`<p class="message">Press to start a new game!</>`);
+
+            $(window).on("click", startGame);
             // add score to leaderboard
             //start new game
         }, 500); 
@@ -274,23 +284,36 @@ function gameStatus() {
 }
 
 function startLevel() {
+
     if (game.level > 2 && game.level < 5) {
         game.cardCount = 12;
         $(".grid-container").css("grid-template-columns", "auto auto auto auto");
     } else if (game.level > 4) {
         game.cardCount = 16;
+    } else {
+        game.cardCount = 9;
     }
 
     createCards();
 
 }
 
-$("#start-game").on("click", startGame);
+$("#start-game").on("click", startGame);   // press start to begin game
 
 function startGame() {
     $("#start-game").addClass("no-display");
+
+    game.level = 1;
+    cards = [];
+
+    player.score = 0;
+    player.lives = 3;
+    player.win = 0;
+    player.choice1 = "";
+    player.choice2 = "";
+
+    $("#lives p").show();
+
     $("#game").css("opacity", "1");
     startLevel();
 }
-
-
