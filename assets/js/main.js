@@ -1,7 +1,6 @@
 let game = {
     "level": 1,
-    "cardCount": 9, 
-    "inProgress": false
+    "cardCount": 9
 }
 
 let cards = [];
@@ -42,73 +41,88 @@ function createCards() {
     }
     $("#game").html(levelLayout);
 
-    createPairs(cards)
-    showCards(cards).then(() => beginMessage()).then(() => playerMove());
+    createPairs(cards).then(() => {
+        console.log('done');
+        showCards(cards).then(() => beginMessage()).then(() => playerMove());
+    });
 }
 
+
 function createPairs(cards, ) {
-    let cardsTemp = [...cards];
-    let numOfPairs = Math.floor(cards.length / 2);
+    return new Promise((resolve) => {
+        let cardsTemp = [...cards];
+        let numOfPairs = Math.floor(cards.length / 2);
 
-    for (let j = 0; j < numOfPairs; j++) {
-        let pairs = [];
-        let pair = [];
-        do {
-            pair = [Math.floor(Math.random() * cardsTemp.length), Math.floor(Math.random() * cardsTemp.length)];
-        } while (pair[0] === pair[1]);
+        let promises = [];
 
-        pair.sort().reverse();
-        pairs.push([cardsTemp[pair[0]], cardsTemp[pair[1]]]);
+        for (let j = 0; j < numOfPairs; j++) {
+            let pairs = [];
+            let pair = [];
+            do {
+                pair = [Math.floor(Math.random() * cardsTemp.length), Math.floor(Math.random() * cardsTemp.length)];
+            } while (pair[0] === pair[1]);
 
-        cardsTemp.splice(pair[0], 1);
-        cardsTemp.splice(pair[1], 1);
+            pair.sort().reverse();
+            pairs.push([cardsTemp[pair[0]], cardsTemp[pair[1]]]);
 
-        for (pair of pairs) {
-            loadArtwork(pair);
-        } 
-    }
-    if (cardsTemp.length > 0) {
-        let remainder = [cardsTemp[0]];
-        loadArtwork(remainder);
-    }
+            cardsTemp.splice(pair[0], 1);
+            cardsTemp.splice(pair[1], 1);
+
+            for (pair of pairs) {
+                promises.push(loadArtwork(pair));
+            } 
+        }
+        if (cardsTemp.length > 0) {
+            let remainder = [cardsTemp[0]];
+            promises.push(loadArtwork(remainder));
+        }
+
+        Promise.all(promises).then(() => {
+            resolve();
+        });
+    });
 }
 
 function loadArtwork(pair) {
     $("html").css("cursor", "wait");
 
-    let randomPage = Math.floor(Math.random() * 9398);
-    let randomArt = Math.floor(Math.random() * 12);
+    return new Promise((resolve) => {
 
-    $(`#${pair[0].id} .flip-card-back`).html("");
-    if (pair.length > 1) {
-        $(`#${pair[1].id} .flip-card-back`).html("");
-    }
+        let randomPage = Math.floor(Math.random() * 9398);
+        let randomArt = Math.floor(Math.random() * 12);
 
-    $.when(
-        $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
-    ).then(
-        function (response) {
-            let artwork = response;
-            const iiif = "/full/843,/0/default.jpg";
-
-            pair[0].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
-
-            $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
-            pair[0].title = `${artwork.data[randomArt].title}`;
-            pair[0].artist = `${artwork.data[randomArt].artist_title}`;
-            pair[0].date = `${artwork.data[randomArt].date_end}`;
-
-            if (pair.length > 1) {
-                pair[1].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
-                $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}">`);
-                pair[1].title = `${artwork.data[randomArt].title}`;
-                pair[1].artist = `${artwork.data[randomArt].artist_title}`;
-                pair[1].date = `${artwork.data[randomArt].date_end}`;
-            };
-
-            console.log(`Pairing Successfull`);
+        $(`#${pair[0].id} .flip-card-back`).html("");
+        if (pair.length > 1) {
+            $(`#${pair[1].id} .flip-card-back`).html("");
         }
-    );
+
+        $.when(
+            $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
+        ).then(
+            function (response) {
+                let artwork = response;
+                const iiif = "/full/843,/0/default.jpg";
+
+                pair[0].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
+
+                $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
+                pair[0].title = `${artwork.data[randomArt].title}`;
+                pair[0].artist = `${artwork.data[randomArt].artist_title}`;
+                pair[0].date = `${artwork.data[randomArt].date_end}`;
+
+                if (pair.length > 1) {
+                    pair[1].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
+                    $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}">`);
+                    pair[1].title = `${artwork.data[randomArt].title}`;
+                    pair[1].artist = `${artwork.data[randomArt].artist_title}`;
+                    pair[1].date = `${artwork.data[randomArt].date_end}`;
+                };
+
+                console.log(`Pairing Successfull`);
+                resolve();
+            }
+        );
+    });
 }
 
 function showCards(cards) {
