@@ -39,12 +39,17 @@
           alt="logo"
         />
         <div class="sound-toggler">
-          <div class="sound-on">
-            <buttton><i class="fa-solid fa-volume-high"></i></buttton>
-          </div>
-          <div class="sound-off">
-            <buttton><i class="fa-solid fa-volume-xmark"></i></buttton>
-          </div>
+            <div class="sound-toggler-inner">
+                <div class="sound-on">
+                    <buttton><i class="fa-solid fa-volume-high"></i></buttton>
+                </div>
+                <div class="sound-off">
+                    <buttton><i class="fa-solid fa-volume-xmark"></i></buttton>
+                </div>
+                <audio id="soundtrack" muted loop>
+                    <source src="assets/tunes/glossy-Coma-Media.mp3">
+                </audio>
+            </div>
         </div>
       </div>
       <nav>
@@ -58,103 +63,103 @@
 
     <!--  Game -->
     <section class="flex-container">
-      <div class="column">
-        <div id="level">
-          <h2>Level:</h2>
-          <h2>1</h2>
-        </div>
-        <div id="score">
-          <h2>Score:</h2>
-          <h2>000</h2>
-        </div>
-      </div>
-      <div id="game" class="grid-container">
-        <div id="card-1" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
+        <div class="column">
+            <div id="level">
+            <h2>Level:</h2>
+            <h2>1</h2>
             </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-2" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-3" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-4" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-5" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-6" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-7" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-8" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-        <div id="card-9" class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <p><i class="fa-solid fa-star center"></i></p>
-            </div>
-            <div class="flip-card-back"></div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div id="lives">
-          <h2>Lives</h2>
-          <p id="life-0"><i class="fa-solid fa-heart"></i></p>
-          <p id="life-1"><i class="fa-solid fa-heart"></i></p>
-          <p id="life-2"><i class="fa-solid fa-heart"></i></p>
-        </div>
-        <div class="box">
-            <div class="box-inner">
-                <button id="start-game" type="button">Start Game</button>
+            <div id="score">
+            <h2>Score:</h2>
+            <h2>000</h2>
             </div>
         </div>
+        <div id="game" class="grid-container">
+            <div id="card-1" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-2" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-3" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-4" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-5" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-6" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-7" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-8" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
+            <div id="card-9" class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <p><i class="fa-solid fa-star center"></i></p>
+                </div>
+                <div class="flip-card-back"></div>
+            </div>
+            </div>
         </div>
+        <div class="column">
+            <div id="lives">
+            <h2>Lives</h2>
+            <p id="life-0"><i class="fa-solid fa-heart"></i></p>
+            <p id="life-1"><i class="fa-solid fa-heart"></i></p>
+            <p id="life-2"><i class="fa-solid fa-heart"></i></p>
+            </div>
+            <div class="box">
+                <div class="box-inner">
+                    <button id="start-game" type="button">Start Game</button>
+                </div>
+            </div>
+        </div>        
     </section>
 
     <script src="assets/js/jQuery.js" type="text/javascript"></script>

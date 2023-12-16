@@ -35,14 +35,17 @@ scFlip.preload = 'auto';
 scFlip.volume = 0.2;
 
 var scWinLevel = new Audio();
-scFlip.src = "assets/tunes/win-level.mp3";
-scFlip.preload = 'auto';
-scFlip.volume = 0.2;
+scWinLevel.src = "assets/tunes/win-level.mp3";
+scWinLevel.preload = 'auto';
+scWinLevel.volume = 0.2;
 
 var scSoundtrack = new Audio();
-scFlip.src = "assets/tunes/glossy-Coma-Media.mp3";  // https://pixabay.com/music/
-scFlip.preload = 'auto';
-scFlip.volume = 0.2;
+scSoundtrack.src = "assets/tunes/glossy-Coma-Media.mp3";
+scSoundtrack.preload = 'auto';
+scSoundtrack.loop = true;
+scSoundtrack.volume = 0.5;
+
+// soundtrack from https://pixabay.com/music/
 
 function createCards() {
     $("#game").html("");
@@ -214,7 +217,11 @@ function message(message) {
 }
 
 function playTune(tune) {
+    $("#soundtrack").prop("volume", 0.2);
     tune.play();
+    tune.onended = function () {
+        $("#soundtrack").prop("volume", "0.5");
+    };
 } 
 
 function playerMove() {
@@ -308,7 +315,7 @@ function showLevel() {
 function gameStatus() {
     if (player.lives <= 0) {
         setTimeout(function () {
-            playTune(scGameOver)
+            playTune(scGameOver);
             message("Game Over");
             $(".box").append(`<h2>Score: ${player.score}</h2>`);
             $(".box").append(`<p class="message">Press to start a new game!</>`);
@@ -344,14 +351,26 @@ function startLevel() {
 
 }
 
+
 $("#start-game").on("click", function() {
     playTune(scSelect);
     startGame();
 });   // press start to begin game
 
 
+$(".sound-toggler-inner").on("click", function () {
+    if ($("#soundtrack").prop("muted")) {
+        $("#soundtrack").prop("muted", false);
+    } else {
+        $("#soundtrack").prop("muted", true);
+    }
+})
+
+
 function startGame() {
     $("#start-game").addClass("no-display");
+    $("#soundtrack").trigger('play');
+    $("#soundtrack").prop("volume", 0.2);
 
     game.level = 1;
     cards = [];

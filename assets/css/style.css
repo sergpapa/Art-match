@@ -129,7 +129,7 @@ nav {
     color: #efaac4;
 }
 
-.sound-toggler div {
+.sound-toggler-inner {
     border-radius: 50%;
     background-color: #d4dccd;
     padding: 5px 8.25px;
