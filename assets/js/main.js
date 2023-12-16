@@ -1,6 +1,9 @@
+//    ------------- Global ---------------
+
 let game = {
     "level": 1,
-    "cardCount": 9
+    "cardCount": 9,
+    "round": false
 }
 
 let cards = [];
@@ -12,6 +15,9 @@ let player = {
     "lives": 3,
     "win": 0
 }
+
+
+//    ------------- Music ---------------
 
 var scWrong = new Audio();
 scWrong.src = "assets/tunes/wrong.mp3";
@@ -40,12 +46,20 @@ scWinLevel.preload = 'auto';
 scWinLevel.volume = 0.2;
 
 var scSoundtrack = new Audio();
-scSoundtrack.src = "assets/tunes/glossy-Coma-Media.mp3";
+scSoundtrack.src = "assets/tunes/glossy-Coma-Media.mp3";  // soundtrack from https://pixabay.com/music/
 scSoundtrack.preload = 'auto';
 scSoundtrack.loop = true;
 scSoundtrack.volume = 0.5;
 
-// soundtrack from https://pixabay.com/music/
+function playTune(tune) {
+    $("#soundtrack").prop("volume", 0.2);
+    tune.play();
+    tune.onended = function () {
+        $("#soundtrack").prop("volume", "0.5");
+    };
+} 
+
+//    ------------- Game funcitons ---------------
 
 function createCards() {
     $("#game").html("");
@@ -216,14 +230,6 @@ function message(message) {
     });
 }
 
-function playTune(tune) {
-    $("#soundtrack").prop("volume", 0.2);
-    tune.play();
-    tune.onended = function () {
-        $("#soundtrack").prop("volume", "0.5");
-    };
-} 
-
 function playerMove() {
     $(".flip-card").on("click", function () {
         $(this).children(".flip-card-inner").addClass("flip");
@@ -233,9 +239,10 @@ function playerMove() {
         if (player.choice1 === "" && clickedCard.won === false) {
             playTune(scSelect);
             player.choice1 = this.id;
-        } else if (player.choice2 === "" && clickedCard.won === false) {
+        } else if (player.choice2 === "" && clickedCard.won === false && player.choice1 !== clickedCard.id) {
             player.choice2 = this.id;
         }
+
         if (player.choice1 !== "" && player.choice2 !== "") {
             checkPair(player.choice1, player.choice2);
             gameStatus();
@@ -271,7 +278,8 @@ function checkPair(choice1, choice2) {
         $(".flex-container").append(correctPair);
         $(".box").hide();
         $(".box").fadeIn("slow");
-        $(".box").on("click", function() {
+        
+        $(".box").on("click", function () {
             $(".box").fadeOut(300, function () { $(this).remove(); });
         })
 
@@ -312,21 +320,73 @@ function showLevel() {
     );
 }
 
+function addToLeaderboard() {
+    let name = $("#name").val();
+    let score = player.score;
+
+    let leaderboardTable = $("#leaderboard");
+
+    let insertIndex = -1;
+    leaderboardTable.find('tr').each(function (index, row) {
+        let existingScore = parseInt($(row).find('td:eq(1)').text(), 10);
+        if (score > existingScore) {
+            insertIndex = index;
+            return false;
+        }
+    });
+
+    let newRow = `
+        <tr>
+            <td>${name}</td>
+            <td>${score}</td>
+        </tr>
+    `;
+
+    if (insertIndex !== -1) {
+        leaderboardTable.find('tr').eq(insertIndex).before(newRow);
+    } else {
+        leaderboardTable.append(newRow);
+    }
+}
+
 function gameStatus() {
     if (player.lives <= 0) {
         setTimeout(function () {
             playTune(scGameOver);
-            message("Game Over");
-            $(".box").append(`<h2>Score: ${player.score}</h2>`);
-            $(".box").append(`<p class="message">Press to start a new game!</>`);
+            let gameOverMessage =
+            `
+            <div class="box">
+                <div class="box-inner">
+                <h1>Game Over</h1>
+                <h2>Score: ${player.score}</h2>
+                <form>
+                    <label for="name">First name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <button id="start-new-game" type="submit">Start New Game</button>
+                </form>
+                </div>
+            </div>`
+            
+            $(".flex-container").append(gameOverMessage);
+            $(".box").hide();
+            $(".box").fadeIn("slow");
 
-            $(window).on("click", startGame);
-            // add score to leaderboard
+            $("form").on("submit", function () {
+                if ($("#name").val() !== "") {
+                    startGame();
+                    $(".box").remove();
+                    };
+                }
+            );
+            
+
+            addToLeaderboard();
         }, 500); 
+
     } else if (player.win >= Math.floor(game.cardCount/2)) {
         setTimeout(function () {
-            $(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
-            alert("You won the level");
+            message("You won the level");
+            //$(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
             game.level ++;
             showLevel();
             cards = [];
@@ -351,6 +411,7 @@ function startLevel() {
 
 }
 
+//    ------------- Always Active ---------------
 
 $("#start-game").on("click", function() {
     playTune(scSelect);
@@ -366,6 +427,7 @@ $(".sound-toggler-inner").on("click", function () {
     }
 })
 
+//    ------------- Start ---------------
 
 function startGame() {
     $("#start-game").addClass("no-display");

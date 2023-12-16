@@ -239,6 +239,26 @@ p i{
     border: none;
 }
 
+#start-new-game {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'Amatic SC', sans-serif;
+    margin: 10px;
+    background-color: #ffc4d1;
+    color: #6b717e;
+}
+
+#name {
+    background-color: #ffe8e1;
+    border: 1px solid #6b717e;
+    border-radius: 2%;
+    display: block;
+}
+
+label {
+    font-size: 26px;
+}
+
 #start-game:hover {
     background-color: #efaac4;
 }
