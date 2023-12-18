@@ -434,6 +434,9 @@ $("#start-game").on("click", function() {
 
 
 $(".sound-toggler-inner").on("click", function () {
+    $(".sound-off").toggleClass("no-display");
+    $(".sound-on").toggleClass("no-display");
+    
     if ($("#soundtrack").prop("muted")) {
         $("#soundtrack").prop("muted", false);
     } else {
@@ -448,7 +451,7 @@ function startGame() {
     $("#soundtrack").trigger('play');
     $("#soundtrack").prop("volume", 0.2);
 
-    game.level = 5;
+    game.level = 1;
     cards = [];
 
     player.score = 0;

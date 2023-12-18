@@ -141,12 +141,10 @@ nav {
 }
 
 .sound-off {
-    display: inline-block;
     font-size: 26px;
 }
 
 .sound-on {
-    display: none;
     font-size: 26px;
 }
 
