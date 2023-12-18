@@ -369,6 +369,10 @@ label {
         width: 100px;
         height: 100px;
     }
+
+    .loading {
+        
+    }
 }
 
 .small-screen {

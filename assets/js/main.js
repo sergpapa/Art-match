@@ -68,10 +68,10 @@ function createCards() {
     `
     <div class="box loading">
         <div class="box-inner">
-            <h1>Loading
+            <h1>Loading <br>
             <i class="fa-solid fa-circle fa-bounce"></i>
-            <i class="fa-solid fa-circle fa-bounce"></i>
-            <i class="fa-solid fa-circle fa-bounce"></i>
+            <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 250ms;"></i>
+            <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 500ms;"></i>
             </h1>
         </div>
     </div>`;
