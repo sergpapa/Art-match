@@ -11,6 +11,7 @@ h2 {
 
 .active {
     text-decoration: overline;
+    -webkit-text-decoration-line: overline;
     font-weight: 700;
 }
 
