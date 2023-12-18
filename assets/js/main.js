@@ -107,6 +107,10 @@ function createCards() {
     }
     $("#game").html(levelLayout);
 
+    if (screen.width < 825 && game.level > 4) {
+        $("#card-15").addClass("small-screen");    // move last card to the middle if screen size is small
+    }
+
     createPairs(cards).then(() => {
         console.log('done');
         showCards(cards).then(() => message("<h1>Begin!</h1>")).then(() => playerMove());
@@ -406,9 +410,14 @@ function startLevel() {
 
     if (game.level > 2 && game.level < 5) {
         game.cardCount = 12;
-        $(".grid-container").css("grid-template-columns", "auto auto auto auto");
+        if (screen.width > 825){
+            $(".grid-container").css("grid-template-columns", "auto auto auto auto");
+        }
     } else if (game.level > 4) {
         game.cardCount = 16;
+        if (screen.width > 825){
+            $(".grid-container").css("grid-template-columns", "auto auto auto auto");
+        }
     } else {
         game.cardCount = 9;
     }
@@ -439,7 +448,7 @@ function startGame() {
     $("#soundtrack").trigger('play');
     $("#soundtrack").prop("volume", 0.2);
 
-    game.level = 1;
+    game.level = 5;
     cards = [];
 
     player.score = 0;

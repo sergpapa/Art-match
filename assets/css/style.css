@@ -373,6 +373,17 @@ label {
     }
 }
 
+.small-screen {
+    grid-column: 2;
+}
+
+
+@media only screen and (max-width: 825px) {
+    .grid-container {
+        grid-template-columns: auto auto auto;
+    }
+}
+
 @media only screen and (max-width: 360px) {
     .flip-card {
             width: 80px;
