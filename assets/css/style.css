@@ -10,13 +10,12 @@ h2 {
 }
 
 .active {
-    text-decoration: overline;
-    -webkit-text-decoration-line: overline;
+    text-decoration-line: overline;
     font-weight: 700;
 }
 
 .active:hover {
-    text-decoration: overline #efaac4;
+    text-decoration-line: overline #efaac4;
 }
 
 .center {
