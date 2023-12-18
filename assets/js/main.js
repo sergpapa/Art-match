@@ -3,14 +3,14 @@
 let game = {
     "level": 1,
     "cardCount": 9,
-    "round": false
+    "round": false,
 }
 
 let cards = [];
 
 let player = {
     "score": 0,
-    "choice1": "",
+    "choice1": "",  // id of clicked card
     "choice2": "",
     "lives": 3,
     "win": 0
@@ -64,6 +64,22 @@ function playTune(tune) {
 function createCards() {
     $("#game").html("");
 
+    let loadingMessage =
+    `
+    <div class="box loading">
+        <div class="box-inner">
+            <h1>Loading
+            <i class="fa-solid fa-circle fa-bounce"></i>
+            <i class="fa-solid fa-circle fa-bounce"></i>
+            <i class="fa-solid fa-circle fa-bounce"></i>
+            </h1>
+        </div>
+    </div>`;
+
+    $(".flex-container").append(loadingMessage);
+    $(".box").hide();
+    $(".box").fadeIn("slow");
+
     for (let i = 0; i < game.cardCount; i++) {
         let card = {};
         card.id = `card-${i}`;
@@ -93,31 +109,14 @@ function createCards() {
 
     createPairs(cards).then(() => {
         console.log('done');
-        showCards(cards).then(() => message("Begin!")).then(() => playerMove());
+        showCards(cards).then(() => message("<h1>Begin!</h1>")).then(() => playerMove());
     });
 }
 
-function createPairs(cards, ) {
+function createPairs(cards) {
     return new Promise((resolve) => {
         let cardsTemp = [...cards];
         let numOfPairs = Math.floor(cards.length / 2);
-
-        $("html").css("cursor", "wait");
-        let loadingMessage =
-        `
-        <div class="box">
-            <div class="box-inner">
-                <h1>Loading
-                <i class="fa-solid fa-circle fa-bounce"></i>
-                <i class="fa-solid fa-circle fa-bounce"></i>
-                <i class="fa-solid fa-circle fa-bounce"></i>
-                </h1>
-            </div>
-        </div>`;
-
-        $(".flex-container").append(loadingMessage);
-        $(".box").hide();
-        $(".box").fadeIn("slow");
 
         let promises = [];
 
@@ -135,6 +134,7 @@ function createPairs(cards, ) {
             cardsTemp.splice(pair[1], 1);
 
             for (pair of pairs) {
+                console.log(pair[0].id, pair[1].id); // console.log pairs
                 promises.push(loadArtwork(pair));
             } 
         }
@@ -218,22 +218,25 @@ function message(message) {
         `
         <div class="box">
             <div class="box-inner">
-                <h1>${message}</h1>
+                ${message}
             </div>
         </div>
        `;
-    $(".box").append(messageToAppend);
+    $(".flex-container").append(messageToAppend);
     $(".box").hide();
     $(".box").fadeIn("slow");
     $(".box").on("click", function () {
+        playTune(scSelect);
         $(".box").fadeOut(300, function () { $(this).remove(); });
     });
 }
 
 function playerMove() {
+    game.round = true;
+
     $(".flip-card").on("click", function () {
         $(this).children(".flip-card-inner").addClass("flip");
-        
+
         let clickedCard = cards.find(card => card.id === this.id);   // fixed issue with flipped cards counting again as choices
 
         if (player.choice1 === "" && clickedCard.won === false) {
@@ -245,7 +248,6 @@ function playerMove() {
 
         if (player.choice1 !== "" && player.choice2 !== "") {
             checkPair(player.choice1, player.choice2);
-            gameStatus();
         }
     });
 }
@@ -255,6 +257,8 @@ function checkPair(choice1, choice2) {
     choice2 = cards.find(card => card.id === player.choice2);
 
     if (choice1.img === choice2.img) {
+        game.round = false;
+
         playTune(scCorrect);
 
         choice1.won = true;
@@ -262,42 +266,38 @@ function checkPair(choice1, choice2) {
 
         let correctPair = 
         `
-        <div class="box">
-            <div class="box-inner">
-                <h1>${choice1.title}</h1>
-                <div class="details">
-                    <p>${choice1.artist}</p>
-                    <p>${choice1.date}</p>
-                </div>
-                <img src="${choice1.img}" alt="image of ${choice1.title}">
-                <h2>+100</h2>
-            </div>
+        <h1>${choice1.title}</h1>
+        <div class="details">
+            <p>${choice1.artist}</p>
+            <p>${choice1.date}</p>
         </div>
+        <img src="${choice1.img}" alt="image of ${choice1.title}">
+        <h2>+100</h2>
         `
-
-        $(".flex-container").append(correctPair);
-        $(".box").hide();
-        $(".box").fadeIn("slow");
-        
-        $(".box").on("click", function () {
-            $(".box").fadeOut(300, function () { $(this).remove(); });
-        })
+        message(correctPair);
 
         player.score += 100;
         player.win ++;
         showScore();
+        gameStatus();    // it is here now
 
     } else {
+        game.round = false;
+
         playTune(scWrong);
+
         setTimeout(function () { 
             for (item of cards) {
                 if (!item.won) {
-                    $(`#${item.id}`).children(".flip-card-inner").removeClass("flip")
+                    $(`#${item.id}`).children(".flip-card-inner").removeClass("flip");
                 }
             }
          }, 1000);
         player.lives = player.lives - 1;
         $(`#life-${player.lives}`).hide("slow");
+        gameStatus();  // aaaaand here
+
+        game.round = true; // should I put it her or inside the setTimout?
     }
 
     player.choice1 = "";
@@ -351,8 +351,12 @@ function addToLeaderboard() {
 
 function gameStatus() {
     if (player.lives <= 0) {
+        game.round = false;
+
         setTimeout(function () {
+
             playTune(scGameOver);
+
             let gameOverMessage =
             `
             <div class="box">
@@ -362,7 +366,7 @@ function gameStatus() {
                 <form>
                     <label for="name">First name:</label>
                     <input type="text" id="name" name="name" required>
-                    <button id="start-new-game" type="submit">Start New Game</button>
+                    <button id="start-new-game" >Start New Game</button>
                 </form>
                 </div>
             </div>`
@@ -371,28 +375,30 @@ function gameStatus() {
             $(".box").hide();
             $(".box").fadeIn("slow");
 
-            $("form").on("submit", function () {
+            $("form").on("click", function () {
                 if ($("#name").val() !== "") {
-                    startGame();
+                    console.log($("#name").val())  // check the input value
                     $(".box").remove();
+                    startGame();
                     };
                 }
             );
-            
 
-            addToLeaderboard();
+            addToLeaderboard();  // LeaderBoard
         }, 500); 
 
     } else if (player.win >= Math.floor(game.cardCount/2)) {
-        setTimeout(function () {
-            message("You won the level");
-            //$(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
-            game.level ++;
-            showLevel();
-            cards = [];
-            player.win = 0;
-            startLevel();
-        }, 500); 
+        $(".box").on("click", function() {
+            setTimeout(function () {
+                message("<h1>You won the level</h1>");
+                // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
+                game.level ++;
+                showLevel();
+                cards = [];
+                player.win = 0;
+                $(".box").on("click", startLevel);
+            }, 500); 
+        })  
     }
 }
 
@@ -408,7 +414,6 @@ function startLevel() {
     }
 
     createCards();
-
 }
 
 //    ------------- Always Active ---------------
@@ -446,5 +451,11 @@ function startGame() {
     $("#lives p").show();
 
     $("#game").css("opacity", "1");
+    showScore();
+    showLevel();
     startLevel();
+
+    $("html").css("cursor", "wait");
+    
+    console.log("Here is your score: ", player.score);
 }

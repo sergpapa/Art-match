@@ -234,17 +234,22 @@ p i{
     font-size: 46px;
     font-weight: 700;
     font-family: 'Amatic SC', sans-serif;
-    background-color: #ffc4d1;
+    background-color: transparent;
     color: #6b717e;
     border: none;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+} 
 
 #start-new-game {
     font-size: 26px;
     font-weight: 700;
     font-family: 'Amatic SC', sans-serif;
-    margin: 10px;
-    background-color: #ffc4d1;
+    margin: 10px auto;
+    background-color: #d4dccd;
     color: #6b717e;
 }
 
@@ -259,10 +264,6 @@ label {
     font-size: 26px;
 }
 
-#start-game:hover {
-    background-color: #efaac4;
-}
-
 .box {
     position: fixed;
     top: 50%;
@@ -275,6 +276,14 @@ label {
     width: auto;
     height: auto;
     color: #6b717e;
+}
+
+.box:hover {
+    background-color: #efaac4;
+}
+
+.loading:hover {                /* ----  so that loading does not change color when hovered  */
+    background-color: #ffc4d1;    
 }
 
 .box .box-inner {
@@ -324,6 +333,7 @@ label {
     font-family: 'Amatic SC', sans-serif;
     font-weight: 700;
 }
+
 
 /* --------   Progress Bar -- By https: //codepen.io/manz/pen/GRxJgZZ  */
 
