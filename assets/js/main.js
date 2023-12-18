@@ -49,14 +49,13 @@ var scSoundtrack = new Audio();
 scSoundtrack.src = "assets/tunes/glossy-Coma-Media.mp3";  // soundtrack from https://pixabay.com/music/
 scSoundtrack.preload = 'auto';
 scSoundtrack.loop = true;
-scSoundtrack.volume = 0.5;
+scSoundtrack.volume = 0.2;
 
 function playTune(tune) {
-    $("#soundtrack").prop("volume", 0.2);
-    tune.play();
-    tune.onended = function () {
-        $("#soundtrack").prop("volume", "0.5");
-    };
+    if ($("#soundtrack").prop("muted") === false) {
+        $("#soundtrack").prop("volume", 0.2);
+        tune.play();
+    }
 } 
 
 //    ------------- Game funcitons ---------------
@@ -450,6 +449,8 @@ function startGame() {
     $("#start-game").addClass("no-display");
     $("#soundtrack").trigger('play');
     $("#soundtrack").prop("volume", 0.2);
+
+    $("meta[name='viewport']").attr('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
 
     game.level = 1;
     cards = [];
