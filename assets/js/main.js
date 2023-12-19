@@ -324,32 +324,49 @@ function showLevel() {
 }
 
 function addToLeaderboard() {
+    $("#leaderBoard").html("");
+
     let name = $("#name").val();
     let score = player.score;
+    let leaderBoard = [];
 
     let leaderboardTable = $("#leaderboard");
 
-    let insertIndex = -1;
-    leaderboardTable.find('tr').each(function (index, row) {
-        let existingScore = parseInt($(row).find('td:eq(1)').text(), 10);
-        if (score > existingScore) {
-            insertIndex = index;
-            return false;
-        }
-    });
+    localStorage.setItem(name, score);
 
-    let newRow = `
-        <tr>
-            <td>${name}</td>
-            <td>${score}</td>
-        </tr>
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let item = {
+            name: key,
+            score: parseInt(localStorage.getItem(key)) // Parse score as an integer
+        };
+        leaderBoard.push(item);
+    }
+
+    leaderBoard.sort((a, b) => b.score - a.score);
+
+    let rows = 
+    `
     `;
 
-    if (insertIndex !== -1) {
-        leaderboardTable.find('tr').eq(insertIndex).before(newRow);
-    } else {
-        leaderboardTable.append(newRow);
+    leaderBoard.forEach(attempt => {
+        let newRow = `
+            <tr id="${attempt.name}">
+                <td>${attempt.name}</td>
+                <td>${attempt.score}</td>
+            </tr>
+        `;
+        rows += newRow;
+    });
+
+    leaderboardTable.append(rows);
+
+    let table = $('#leaderBoard');
+
+    if ($(`#${name}`)) {
+        $(`#${name}`).addClass("active-row");
     }
+
 }
 
 function gameStatus() {
@@ -381,13 +398,13 @@ function gameStatus() {
             $("form").on("click", function () {
                 if ($("#name").val() !== "") {
                     console.log($("#name").val())  // check the input value
+                    let name = $("#name").val();
+                    addToLeaderboard(name);
                     $(".box").remove();
                     startGame();
                     };
                 }
             );
-
-            addToLeaderboard();  // LeaderBoard
         }, 500); 
 
     } else if (player.win >= Math.floor(game.cardCount/2)) {
@@ -472,3 +489,13 @@ function startGame() {
     
     console.log("Here is your score: ", player.score);
 }
+
+// ------------------ on Load ------   
+
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (currentPage === 'board.html') {
+        addToLeaderboard();
+    };
+});
