@@ -58,6 +58,336 @@ function playTune(tune) {
     }
 } 
 
+//    ------------- Cards Database ---------------
+
+let potentialCards = [
+    {
+        "id": "",
+        "title": "Lid with Lion-Dog, probably for Incense Burner",
+        "artist": "null",
+        "date": "1199",
+        "img": "https://www.artic.edu/iiif/2/2839ccc3-8fbb-73d4-54fc-4fe640b4da3e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Bodhisattva Seishi, from the triptych Approach of the Amida Trinity",
+        "artist": "null",
+        "date": "1300",
+        "img": "https://www.artic.edu/iiif/2/c0ef0433-aada-9f5a-713f-7c61333c4d06/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Lid with Lion-Dog, probably for Incense Burner",
+        "artist": "unknown",
+        "date": "1199",
+        "img": "https://www.artic.edu/iiif/2/2839ccc3-8fbb-73d4-54fc-4fe640b4da3e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+
+    {
+        "id": "",
+        "title": "Drunkenness of Noah",
+        "artist": "Michelangelo Buonarroti",
+        "date": "1599",
+        "img": "https://www.artic.edu/iiif/2/0b31dfb0-34e8-4985-a91f-cf5abfa2fbbd/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Cattle and Sheep with Herdsman in Rocky Landscape",
+        "artist": "Johann Heinrich Roos",
+        "date": "1685",
+        "img": "https://www.artic.edu/iiif/2/ba70d605-a3df-cd65-8003-6c2adea38b8c/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Bodhisattva Seishi, from the triptych Approach of the Amida Trinity",
+        "artist": "null",
+        "date": "1300",
+        "img": "https://www.artic.edu/iiif/2/c0ef0433-aada-9f5a-713f-7c61333c4d06/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "#126, Tokyo",
+        "artist": "Yasuhiro Ishimoto",
+        "date": "1969",
+        "img": "https://www.artic.edu/iiif/2/be5ebd9c-5223-8970-4d2e-a51562461925/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Drunkenness of Noah",
+        "artist": "Michelangelo Buonarroti",
+        "date": "1599",
+        "img": "https://www.artic.edu/iiif/2/0b31dfb0-34e8-4985-a91f-cf5abfa2fbbd/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Cattle and Sheep with Herdsman in Rocky Landscape",
+        "artist": "Johann Heinrich Roos",
+        "date": "1685",
+        "img": "https://www.artic.edu/iiif/2/ba70d605-a3df-cd65-8003-6c2adea38b8c/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Lobster Pots - Selsea Bill",
+        "artist": "James McNeill Whistler",
+        "date": "1881",
+        "img": "https://www.artic.edu/iiif/2/11262c19-1238-cc6f-9888-d55e75d944c4/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Ogden Ridge from Sherlock Valley",
+        "artist": "Edward C. Porter",
+        "date": "1964",
+        "img": "https://www.artic.edu/iiif/2/d39a7f76-9e15-d963-9711-ba516086df60/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Ogden Ridge from Sherlock Valley",
+        "artist": "Edward C. Porter",
+        "date": "1964",
+        "img": "https://www.artic.edu/iiif/2/d39a7f76-9e15-d963-9711-ba516086df60/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Maxima Egestas Est Avaritia, Design for a footed dish",
+        "artist": "Johann Theodor de Bry",
+        "date": "1588",
+        "img": "https://www.artic.edu/iiif/2/b2553bc9-290a-d0e7-7175-af9943171a0d/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Plum Trees and Pheasants (Furnishing Fabric)",
+        "artist": "Bannister Hall Print Works",
+        "date": "1850",
+        "img": "https://www.artic.edu/iiif/2/c431191d-376a-7bb9-9d9d-f70cc007b780/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Te atua (The God), from the Suite of Late Wood-Block Prints",
+        "artist": "Paul Gauguin",
+        "date": "1899",
+        "img": "https://www.artic.edu/iiif/2/1a265610-6b2f-e16f-9174-7124564a839e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Te atua (The God), from the Suite of Late Wood-Block Prints",
+        "artist": "Paul Gauguin",
+        "date": "1899",
+        "img": "https://www.artic.edu/iiif/2/1a265610-6b2f-e16f-9174-7124564a839e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Plum Trees and Pheasants(Furnishing Fabric)",
+        "artist": "Bannister Hall Print Works",
+        "date": "1850",
+        "img": "https://www.artic.edu/iiif/2/c431191d-376a-7bb9-9d9d-f70cc007b780/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Lobster Pots - Selsea Bill",
+        "artist": "James McNeill Whistler",
+        "date": "1881",
+        "img": "https://www.artic.edu/iiif/2/11262c19-1238-cc6f-9888-d55e75d944c4/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Bust of Shakespeare",
+        "artist": "Wedgwood Manufactory",
+        "date": "1799",
+        "img": "https://www.artic.edu/iiif/2/981d2bea-5113-05bf-c28e-212e06c178a5/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Christ Presented to the People: Oblong Plate",
+        "artist": "Rembrandt van Rijn",
+        "date": "1655",
+        "img": "https://www.artic.edu/iiif/2/42e4a905-7ad0-ab08-0c43-27af3b23c9d0/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "card-2",
+        "title": "Untitled",
+        "artist": "Ralph Eugene Meatyard",
+        "date": "1960",
+        "img": "https://www.artic.edu/iiif/2/b2969aae-23ac-3d52-ed06-1d3c0345d891/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Standing Male Figure (Mankishi)",
+        "artist": "Songye",
+        "date": "1925",
+        "img": "https://www.artic.edu/iiif/2/83bdab6c-cf6b-1f13-05e5-2cbd98431bdd/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Art Institute of Chicago Competition, First Floor Plan",
+        "artist": "Studio of Paul Philippe Cret",
+        "date": "1934",
+        "img": "https://www.artic.edu/iiif/2/e23672eb-5e41-2eac-60c1-cd683341962e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Christ Presented to the People: Oblong Plate",
+        "artist": "Rembrandt van Rijn",
+        "date": "1655",
+        "img": "https://www.artic.edu/iiif/2/42e4a905-7ad0-ab08-0c43-27af3b23c9d0/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Art Institute of Chicago Competition, First Floor Plan",
+        "artist": "Studio of Paul Philippe Cret",
+        "date": "1934",
+        "img": "https://www.artic.edu/iiif/2/e23672eb-5e41-2eac-60c1-cd683341962e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Bust of Shakespeare",
+        "artist": "Wedgwood Manufactory",
+        "date": "1799",
+        "img": "https://www.artic.edu/iiif/2/981d2bea-5113-05bf-c28e-212e06c178a5/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Untitled",
+        "artist": "Ralph Eugene Meatyard",
+        "date": "1960",
+        "img": "https://www.artic.edu/iiif/2/b2969aae-23ac-3d52-ed06-1d3c0345d891/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Protest Surrounding the Construction of Narita Airport",
+        "artist": "Unknown",
+        "date": "1978",
+        "img": "https://www.artic.edu/iiif/2/113e922b-f5d6-d0c0-00a0-cb54c7b1bc22/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Louis Hesselin",
+        "artist": "Robert Nanteuil",
+        "date": "1658",
+        "img": "https://www.artic.edu/iiif/2/acb980aa-a3c4-0cd1-e5ce-3c1e0ffd1b96/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Louis Hesselin",
+        "artist": "Robert Nanteuil",
+        "date": "1658",
+        "img": "https://www.artic.edu/iiif/2/acb980aa-a3c4-0cd1-e5ce-3c1e0ffd1b96/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "card-3",
+        "title": "The Late Mrs. Morris",
+        "artist": "David Claypoole Johnston",
+        "date": "1828",
+        "img": "https://www.artic.edu/iiif/2/e12c60a6-a708-bfd2-c4dc-7e1f5d22795d/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Late Mrs. Morris",
+        "artist": "David Claypoole Johnston",
+        "date": "1828",
+        "img": "https://www.artic.edu/iiif/2/e12c60a6-a708-bfd2-c4dc-7e1f5d22795d/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Protest Surrounding the Construction of Narita Airport",
+        "artist": "Unknown",
+        "date": "1978",
+        "img": "https://www.artic.edu/iiif/2/113e922b-f5d6-d0c0-00a0-cb54c7b1bc22/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Black Mill, Winchelsea",
+        "artist": "Frank Brangwyn",
+        "date": "1908",
+        "img": "https://www.artic.edu/iiif/2/dd36470d-b96f-0d78-8869-ab2e765799f5/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Black Mill, Winchelsea",
+        "artist": "Frank Brangwyn",
+        "date": "1908",
+        "img": "https://www.artic.edu/iiif/2/dd36470d-b96f-0d78-8869-ab2e765799f5/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Pair of Mitten Gauntlets",
+        "artist": "Unknown",
+        "date": "1900",
+        "img": "https://www.artic.edu/iiif/2/561814c4-4618-8449-a079-6465207298ab/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    }]
+
+
 //    ------------- Game funcitons ---------------
 
 function createCards() {
@@ -154,45 +484,52 @@ function createPairs(cards) {
     });
 }
 
+function shuffle(array) {       // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    let currentIndex = array.length, randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
+
 function loadArtwork(pair) {   
     return new Promise((resolve) => {
-
-        let randomPage = Math.floor(Math.random() * 9398);
-        let randomArt = Math.floor(Math.random() * 12);
+        let mix = shuffle([...potentialCards]);
+        let randomArt = mix[0];
 
         $(`#${pair[0].id} .flip-card-back`).html("");
         if (pair.length > 1) {
             $(`#${pair[1].id} .flip-card-back`).html("");
         }
 
-        $.when(
-            $.getJSON(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
-        ).then(
-            function (response) {
-                let artwork = response;
-                const iiif = "/full/400,/0/default.jpg";    // change image size
+        pair[0].img = randomArt.img;
 
-                pair[0].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
+        $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
+        pair[0].title = randomArt.title;
+        pair[0].artist = randomArt.artist;
+        pair[0].date = randomArt.date;
 
-                $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
-                pair[0].title = `${artwork.data[randomArt].title}`;
-                pair[0].artist = `${artwork.data[randomArt].artist_title}`;
-                pair[0].date = `${artwork.data[randomArt].date_end}`;
-
-                if (pair.length > 1) {
-                    pair[1].img = `${artwork.config.iiif_url}/${artwork.data[randomArt].image_id}${iiif}`;
-                    $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}">`);
-                    pair[1].title = `${artwork.data[randomArt].title}`;
-                    pair[1].artist = `${artwork.data[randomArt].artist_title}`;
-                    pair[1].date = `${artwork.data[randomArt].date_end}`;
-                };
-
-                console.log(`Pairing Successfull`);
-                resolve();
+        if (pair.length > 1) {
+            pair[1].img = randomArt.img;
+            $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}">`);
+            pair[1].title = randomArt.title;
+            pair[1].artist = randomArt.artist;
+            pair[1].date = randomArt.date;
+        };
+        resolve();
             }
         );
-    });
-}
+    };
 
 function showCards(cards) {
     return new Promise((resolve) => {
@@ -418,7 +755,7 @@ function startLevel() {
             $(".grid-container").css("grid-template-columns", "auto auto auto auto");
         }
     } else {
-        game.cardCount = 9;
+        game.cardCount = 9;      // should be 9
     }
 
     createCards();
