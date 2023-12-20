@@ -425,6 +425,10 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
+    header {
+            text-align: left;
+        }
+
     .logo {
         width: 200px;
     }
@@ -454,6 +458,12 @@ label {
     .flip-card {
         width: 100px;
         height: 100px;
+    }
+
+    .sound-toggler-inner {
+        min-width: 23px;
+        min-height: 23px;
+        
     }
 
 }
