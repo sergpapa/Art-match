@@ -3,7 +3,7 @@
 let game = {
     "level": 1,
     "cardCount": 9,
-    "round": false,
+    "round": false
 }
 
 let cards = [];
@@ -572,22 +572,24 @@ function message(message) {
 }
 
 function playerMove() {
-    game.round = true;
+    $(".box").on("click", () => game.round = true);
 
     $(".flip-card").on("click", function () {
-        $(this).children(".flip-card-inner").addClass("flip");
+        if (game.round) {
+            $(this).children(".flip-card-inner").addClass("flip");
 
-        let clickedCard = cards.find(card => card.id === this.id);   // fixed issue with flipped cards counting again as choices
+            let clickedCard = cards.find(card => card.id === this.id);   // fixed issue with flipped cards counting again as choices
 
-        if (player.choice1 === "" && clickedCard.won === false) {
-            playTune(scSelect);
-            player.choice1 = this.id;
-        } else if (player.choice2 === "" && clickedCard.won === false && player.choice1 !== clickedCard.id) {
-            player.choice2 = this.id;
-        }
+            if (player.choice1 === "" && clickedCard.won === false) {
+                playTune(scSelect);
+                player.choice1 = this.id;
+            } else if (player.choice2 === "" && clickedCard.won === false && player.choice1 !== clickedCard.id) {
+                player.choice2 = this.id;
+            }
 
-        if (player.choice1 !== "" && player.choice2 !== "") {
-            checkPair(player.choice1, player.choice2);
+            if (player.choice1 !== "" && player.choice2 !== "") {
+                checkPair(player.choice1, player.choice2);
+            }
         }
     });
 }
@@ -619,25 +621,25 @@ function checkPair(choice1, choice2) {
         player.score += 100;
         player.win ++;
         showScore();
-        gameStatus();    // it is here now
+        gameStatus();
+        $(".box").on("click", () => game.round = true);
 
     } else {
         game.round = false;
-
         playTune(scWrong);
 
         setTimeout(function () { 
             for (item of cards) {
                 if (!item.won) {
                     $(`#${item.id}`).children(".flip-card-inner").removeClass("flip");
+                    game.round = true;
                 }
             }
          }, 1000);
         player.lives = player.lives - 1;
         $(`#life-${player.lives}`).hide("slow");
-        gameStatus();  // aaaaand here
+        gameStatus();
 
-        game.round = true; // should I put it her or inside the setTimout?
     }
 
     player.choice1 = "";
@@ -708,7 +710,6 @@ function addToLeaderboard() {
 
 function gameStatus() {
     if (player.lives <= 0) {
-        game.round = false;
 
         setTimeout(function () {
 
