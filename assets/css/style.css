@@ -91,16 +91,9 @@ h2 {
     font-size: 20px;
 }
 
-.container h1 {
-    text-align: center;
-    font-weight: 700px;
-    font-size: 26px;
-}
-
 /* --------------------- Header ---*/
-
-header>div {
-    display: flex;
+header {
+    text-align: center;
 }
 
 .logo {
@@ -397,7 +390,32 @@ label {
     color: #93a782;
 }
 
-/* --------   Progress Bar -- By https: //codepen.io/manz/pen/GRxJgZZ  */
+/* --------   Rules  ---------------------------- */
+
+#play-now {
+    padding: 10px;
+    background-color: #ffc4d1;
+    color:#6b717e;
+    margin: 10px;
+    border: 1px solid #6b717e;
+    border-radius: 5%;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 26px;
+}
+
+#play-now:hover {
+    background-color: #ffe8e1;
+}
+
+.container h1 {
+    text-align: center;
+    font-weight: 700px;
+    font-size: 36px;
+}
+
+.center-button {
+    text-align: center;
+}
 
 
 /* ------- Media Quesries ---*/
