@@ -798,14 +798,14 @@ $(".sound-toggler-inner").on("click", function () {
     }
 })
 
+
+
 //    ------------- Start ---------------
 
 function startGame() {
     $("#start-game").addClass("no-display");
     $("#soundtrack").trigger('play');
     $("#soundtrack").prop("volume", 0.2);
-
-    $("meta[name='viewport']").attr('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
 
     game.level = 1;
     cards = [];
