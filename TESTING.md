@@ -14,7 +14,6 @@ The ArtMatch website has been tested manually as well as with automated services
   - [**Testing User Stories**](#testing-user-stories)
   - [**Known Bugs**](#known-bugs)
     - [**Resolved**](#resolved)
-    - [**Un-resolved**](#un-resolved)
   - [**Additional Testing**](#additional-testing)
     - [**Lighthouse**](#lighthouse)
   
@@ -28,16 +27,15 @@ The ArtMatch website has been tested manually as well as with automated services
 
 - [Rules page](https://sergpapa.github.io/Art-match/rules.html)
   
-  ![Rules-page-validator]()
+  ![Rules-page-validator](assets/images/for-testing/rules-page-html-validator.png)
 
-- [Board page]()
+- [Board page](https://sergpapa.github.io/Art-match/board.html)
   
-  ![Board-page-validator]()
-
+  ![Board-page-validator](assets/images/for-testing/board-page-html-validator.png)
 
 ### *[w3schools CSS Validator](https://jigsaw.w3.org/css-validator/)*
 
-![css-validator](assets/images/home-page-css-validator.png)
+![css-validator]()
 
 [Back to top](#contents)
 
@@ -66,26 +64,6 @@ ArtMatch has been tested in multiple browsers with no visible issues. Google Chr
 
 ### **Resolved**
 
-A console error was continuously thrown for a request of favicon.ico, although no such file existed in the repository.
-
-![favicon-bug](assets/images/favicon-bug.png)
-
-The following code found on [Stackoverflow](https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests) by [Sridhar Ratnakumar](https://stackoverflow.com/users/55246/sridhar-ratnakumar) and [Diego Perini](https://stackoverflow.com/users/445673/diego-perini) that seems to have resolved the issue:
-
-~~~ html
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-~~~
-
-On a second iteration, [fpc-favicon](assets/images/logo-favicon.png) was added on the project. Decided to keep the bug fix as the advice above also served as a fix for people not wanting to add a **favicon** file.
-
-### **Un-resolved**
-
-Performance testing on the [Gallery Page](https://sergpapa.github.io/FPC/gallery.html) with [Google Chrome Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) showcases poor results varying from 37-72%.
-
-![Gallery-Performance](assets/images/performance-bug.png)
-
-Actions taken: All images were converted from .jpg or .jpeg to .webp files in order to resuce size and payload. No significant result in performance. This bug does not seem to affect how quickly the page loads across devices.
-
 [Back to top](#contents)
 
 ## **Additional Testing**
@@ -101,6 +79,6 @@ The website has been tested using [Google Lighthouse](https://developer.chrome.c
   
   An example of the Lighthouse results in the FPC home page is shown below:
 
-  ![Lighthouse-home-page](assets/images/lighthouse-home-page.png)
+  ![Lighthouse-home-page]()
 
 Back to [README.md](./README.md#testing).
