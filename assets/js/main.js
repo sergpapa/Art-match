@@ -554,6 +554,7 @@ function showCards(cards) {
 }
 
 function message(message) {
+    game.round = false;
     let messageToAppend =
         `
         <div class="box">
@@ -567,7 +568,8 @@ function message(message) {
     $(".box").fadeIn("slow");
     $(".box").on("click", function () {
         playTune(scSelect);
-        $(".box").fadeOut(300, function () { $(this).remove(); });
+        $(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
+        game.round = true
     });
 }
 
@@ -673,7 +675,7 @@ function addToLeaderboard() {
 
     localStorage.setItem(name, score);
 
-    for (let i = 0; i < localStorage.length; i++) {
+    for (let i = 1; i < localStorage.length; i++) {
         let key = localStorage.key(i);
         let item = {
             name: key,
@@ -710,6 +712,7 @@ function addToLeaderboard() {
 
 function gameStatus() {
     if (player.lives <= 0) {
+        game.round = false;
 
         setTimeout(function () {
 
@@ -724,7 +727,7 @@ function gameStatus() {
                 <form>
                     <label for="name">First name:</label>
                     <input type="text" id="name" name="name" required>
-                    <button id="start-new-game" >Start New Game</button>
+                    <button type="button" id="start-new-game">Start New Game</button>
                 </form>
                 </div>
             </div>`
@@ -749,7 +752,6 @@ function gameStatus() {
         $(".box").on("click", function() {
             setTimeout(function () {
                 message("<h1>You won the level</h1>");
-                // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
                 game.level ++;
                 showLevel();
                 cards = [];
@@ -776,6 +778,7 @@ function startLevel() {
         game.cardCount = 9;      // should be 9
     }
 
+    windowResize();
     createCards();
 }
 
@@ -784,7 +787,6 @@ function startLevel() {
 $("#start-game").on("click", function() {
     playTune(scSelect);
     startGame();
-    windowResize();
 });   // press start to begin game
 
 
