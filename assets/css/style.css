@@ -398,6 +398,7 @@ label {
 
 #play-now {
     padding: 10px;
+    text-decoration: none;
     background-color: #ffc4d1;
     color:#6b717e;
     margin: 10px;
@@ -419,6 +420,7 @@ label {
 
 .center-button {
     text-align: center;
+    padding: 20px;
 }
 
 
