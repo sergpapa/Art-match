@@ -63,8 +63,53 @@ function playTune(tune) {
 let potentialCards = [
     {
         "id": "",
+        "title": "Foliage—Oak Tree and Fruit Seller",
+        "artist": "Édouard Jean Vuillard",
+        "date": "1918",
+        "img": "https://www.artic.edu/iiif/2/e170725f-cc12-cb0f-841e-8b1ea918933e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "Design for Printed Textile",
+        "artist": "Fredrica Justina Staack",
+        "date": "1934",
+        "img": "https://www.artic.edu/iiif/2/90b3ed63-d5a0-fd99-86b6-a3e9cf73708e/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "", 
+        "title": "Martha's Vineyard 8", 
+        "artist": "Aaron Siskind",
+        "date": "1947",
+        "img": "https://www.artic.edu/iiif/2/049a1323-f24c-fa36-d197-bccee45cee87/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+},
+    {
+        "id": "", 
+        "title": "The Shepherd",
+        "artist": "Paulus Potter",
+        "date": "1649",
+        "img": "https://www.artic.edu/iiif/2/ccf10c35-ea59-995b-28d8-5026d2c0c1f8/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+},
+    {
+        "id": "",
+        "title": "The Courtesans Somenosuke and Kisegawa of the Matsubaya",
+        "artist": "Kitagawa Utamaro",
+        "date": "1802",
+        "img": "https://www.artic.edu/iiif/2/a030ffdc-c542-786f-af11-7379854892ac/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
         "title": "Lid with Lion-Dog, probably for Incense Burner",
-        "artist": "null",
+        "artist": "Unknown",
         "date": "1199",
         "img": "https://www.artic.edu/iiif/2/2839ccc3-8fbb-73d4-54fc-4fe640b4da3e/full/400,/0/default.jpg",
         "code": "",
@@ -73,22 +118,12 @@ let potentialCards = [
     {
         "id": "",
         "title": "The Bodhisattva Seishi, from the triptych Approach of the Amida Trinity",
-        "artist": "null",
+        "artist": "Unknown",
         "date": "1300",
         "img": "https://www.artic.edu/iiif/2/c0ef0433-aada-9f5a-713f-7c61333c4d06/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
-    {
-        "id": "",
-        "title": "Lid with Lion-Dog, probably for Incense Burner",
-        "artist": "unknown",
-        "date": "1199",
-        "img": "https://www.artic.edu/iiif/2/2839ccc3-8fbb-73d4-54fc-4fe640b4da3e/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-
     {
         "id": "",
         "title": "Drunkenness of Noah",
@@ -104,15 +139,6 @@ let potentialCards = [
         "artist": "Johann Heinrich Roos",
         "date": "1685",
         "img": "https://www.artic.edu/iiif/2/ba70d605-a3df-cd65-8003-6c2adea38b8c/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "The Bodhisattva Seishi, from the triptych Approach of the Amida Trinity",
-        "artist": "null",
-        "date": "1300",
-        "img": "https://www.artic.edu/iiif/2/c0ef0433-aada-9f5a-713f-7c61333c4d06/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
@@ -127,37 +153,10 @@ let potentialCards = [
     },
     {
         "id": "",
-        "title": "Drunkenness of Noah",
-        "artist": "Michelangelo Buonarroti",
-        "date": "1599",
-        "img": "https://www.artic.edu/iiif/2/0b31dfb0-34e8-4985-a91f-cf5abfa2fbbd/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "Cattle and Sheep with Herdsman in Rocky Landscape",
-        "artist": "Johann Heinrich Roos",
-        "date": "1685",
-        "img": "https://www.artic.edu/iiif/2/ba70d605-a3df-cd65-8003-6c2adea38b8c/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
         "title": "Lobster Pots - Selsea Bill",
         "artist": "James McNeill Whistler",
         "date": "1881",
         "img": "https://www.artic.edu/iiif/2/11262c19-1238-cc6f-9888-d55e75d944c4/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "Ogden Ridge from Sherlock Valley",
-        "artist": "Edward C. Porter",
-        "date": "1964",
-        "img": "https://www.artic.edu/iiif/2/d39a7f76-9e15-d963-9711-ba516086df60/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
@@ -199,33 +198,6 @@ let potentialCards = [
     },
     {
         "id": "",
-        "title": "Te atua (The God), from the Suite of Late Wood-Block Prints",
-        "artist": "Paul Gauguin",
-        "date": "1899",
-        "img": "https://www.artic.edu/iiif/2/1a265610-6b2f-e16f-9174-7124564a839e/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "Plum Trees and Pheasants(Furnishing Fabric)",
-        "artist": "Bannister Hall Print Works",
-        "date": "1850",
-        "img": "https://www.artic.edu/iiif/2/c431191d-376a-7bb9-9d9d-f70cc007b780/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "Lobster Pots - Selsea Bill",
-        "artist": "James McNeill Whistler",
-        "date": "1881",
-        "img": "https://www.artic.edu/iiif/2/11262c19-1238-cc6f-9888-d55e75d944c4/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
         "title": "Bust of Shakespeare",
         "artist": "Wedgwood Manufactory",
         "date": "1799",
@@ -243,7 +215,7 @@ let potentialCards = [
         "won": false
     },
     {
-        "id": "card-2",
+        "id": "",
         "title": "Untitled",
         "artist": "Ralph Eugene Meatyard",
         "date": "1960",
@@ -270,110 +242,83 @@ let potentialCards = [
         "won": false
     },
     {
-        "id": "",
-        "title": "Christ Presented to the People: Oblong Plate",
-        "artist": "Rembrandt van Rijn",
-        "date": "1655",
-        "img": "https://www.artic.edu/iiif/2/42e4a905-7ad0-ab08-0c43-27af3b23c9d0/full/400,/0/default.jpg",
+        "id": "", 
+        "title": "Pair of Pine Tree Shillings",
+        "artist": "John Hull",
+        "date": "1682",
+        "img": "https://www.artic.edu/iiif/2/f05859c8-c54d-af98-7cfd-5a6d82b228b6/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
     {
         "id": "",
-        "title": "Art Institute of Chicago Competition, First Floor Plan",
-        "artist": "Studio of Paul Philippe Cret",
-        "date": "1934",
-        "img": "https://www.artic.edu/iiif/2/e23672eb-5e41-2eac-60c1-cd683341962e/full/400,/0/default.jpg",
+        "title": "Protest Surrounding the Construction of Narita Airport",
+        "artist": "Unknown",
+        "date": "1978",
+        "img": "https://www.artic.edu/iiif/2/113e922b-f5d6-d0c0-00a0-cb54c7b1bc22/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
     {
         "id": "",
-        "title": "Bust of Shakespeare",
-        "artist": "Wedgwood Manufactory",
+        "title": "Louis Hesselin",
+        "artist": "Robert Nanteuil",
+        "date": "1658",
+        "img": "https://www.artic.edu/iiif/2/acb980aa-a3c4-0cd1-e5ce-3c1e0ffd1b96/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Late Mrs. Morris",
+        "artist": "David Claypoole Johnston",
+        "date": "1828",
+        "img": "https://www.artic.edu/iiif/2/e12c60a6-a708-bfd2-c4dc-7e1f5d22795d/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "",
+        "title": "The Black Mill, Winchelsea",
+        "artist": "Frank Brangwyn",
+        "date": "1908",
+        "img": "https://www.artic.edu/iiif/2/dd36470d-b96f-0d78-8869-ab2e765799f5/full/400,/0/default.jpg",
+        "code": "",
+        "won": false
+    },
+    {
+        "id": "", 
+        "title": "Design for a Chimney Piece",
+        "artist": "Unknown Italian",
         "date": "1799",
-        "img": "https://www.artic.edu/iiif/2/981d2bea-5113-05bf-c28e-212e06c178a5/full/400,/0/default.jpg",
+        "img": "https://www.artic.edu/iiif/2/dcbb9f7d-8d12-ae01-6bca-896aba419bc7/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
     {
         "id": "",
-        "title": "Untitled",
-        "artist": "Ralph Eugene Meatyard",
-        "date": "1960",
-        "img": "https://www.artic.edu/iiif/2/b2969aae-23ac-3d52-ed06-1d3c0345d891/full/400,/0/default.jpg",
+        "title": "Bamboo Wood",
+        "artist": "Yoshida Hiroshi",
+        "date": "1939",
+        "img": "https://www.artic.edu/iiif/2/a67f77e4-7b87-1fbf-4c41-5ac73a92e600/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
     {
         "id": "",
-        "title": "Protest Surrounding the Construction of Narita Airport",
-        "artist": "Unknown",
-        "date": "1978",
-        "img": "https://www.artic.edu/iiif/2/113e922b-f5d6-d0c0-00a0-cb54c7b1bc22/full/400,/0/default.jpg",
+        "title": "Hermes, plate 48 from Drawings for The Iliad",
+        "artist": "Meriden Gravure Company",
+        "date": "1962",
+        "img": "https://www.artic.edu/iiif/2/a535c9c9-d85c-4cd5-641f-d1e997b94b49/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
     {
         "id": "",
-        "title": "Louis Hesselin",
-        "artist": "Robert Nanteuil",
-        "date": "1658",
-        "img": "https://www.artic.edu/iiif/2/acb980aa-a3c4-0cd1-e5ce-3c1e0ffd1b96/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "Louis Hesselin",
-        "artist": "Robert Nanteuil",
-        "date": "1658",
-        "img": "https://www.artic.edu/iiif/2/acb980aa-a3c4-0cd1-e5ce-3c1e0ffd1b96/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "card-3",
-        "title": "The Late Mrs. Morris",
-        "artist": "David Claypoole Johnston",
-        "date": "1828",
-        "img": "https://www.artic.edu/iiif/2/e12c60a6-a708-bfd2-c4dc-7e1f5d22795d/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "The Late Mrs. Morris",
-        "artist": "David Claypoole Johnston",
-        "date": "1828",
-        "img": "https://www.artic.edu/iiif/2/e12c60a6-a708-bfd2-c4dc-7e1f5d22795d/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "Protest Surrounding the Construction of Narita Airport",
-        "artist": "Unknown",
-        "date": "1978",
-        "img": "https://www.artic.edu/iiif/2/113e922b-f5d6-d0c0-00a0-cb54c7b1bc22/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "The Black Mill, Winchelsea",
-        "artist": "Frank Brangwyn",
-        "date": "1908",
-        "img": "https://www.artic.edu/iiif/2/dd36470d-b96f-0d78-8869-ab2e765799f5/full/400,/0/default.jpg",
-        "code": "",
-        "won": false
-    },
-    {
-        "id": "",
-        "title": "The Black Mill, Winchelsea",
-        "artist": "Frank Brangwyn",
-        "date": "1908",
-        "img": "https://www.artic.edu/iiif/2/dd36470d-b96f-0d78-8869-ab2e765799f5/full/400,/0/default.jpg",
+        "title": "Shin Bridge, Nikko (Nikko Shinkyo)",
+        "artist": "Kawase Hasui",
+        "date": "1953",
+        "img": "https://www.artic.edu/iiif/2/735e1ce9-72a1-9bb9-b894-afa131c835f5/full/400,/0/default.jpg",
         "code": "",
         "won": false
     },
@@ -386,7 +331,8 @@ let potentialCards = [
         "code": "",
         "won": false
     }]
-
+    
+let mix = shuffle([...potentialCards]);
 
 //    ------------- Game funcitons ---------------
 
@@ -441,7 +387,6 @@ function createCards() {
     }
 
     createPairs(cards).then(() => {
-        console.log('done');
         showCards(cards).then(() => message("<h1>Begin!</h1>")).then(() => playerMove());
     });
 }
@@ -466,9 +411,9 @@ function createPairs(cards) {
             cardsTemp.splice(pair[0], 1);
             cardsTemp.splice(pair[1], 1);
 
-            for (pair of pairs) {
-                console.log(pair[0].id, pair[1].id); // console.log pairs
-                promises.push(loadArtwork(pair));
+            for (currentPair of pairs) {
+                // console.log pairs: console.log(currentPair[0].id, currentPair[1].id);
+                promises.push(loadArtwork(currentPair));
             } 
         }
         if (cardsTemp.length > 0) {
@@ -504,7 +449,6 @@ function shuffle(array) {       // https://stackoverflow.com/questions/2450954/h
 
 function loadArtwork(pair) {   
     return new Promise((resolve) => {
-        let mix = shuffle([...potentialCards]);
         let randomArt = mix[0];
 
         $(`#${pair[0].id} .flip-card-back`).html("");
@@ -514,22 +458,24 @@ function loadArtwork(pair) {
 
         pair[0].img = randomArt.img;
 
-        $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}">`);
+        $(`#${pair[0].id} .flip-card-back`).html(`<img src="${pair[0].img}" alt="${pair[0].title} by ${pair[0].artist}">`);
         pair[0].title = randomArt.title;
         pair[0].artist = randomArt.artist;
         pair[0].date = randomArt.date;
 
         if (pair.length > 1) {
             pair[1].img = randomArt.img;
-            $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}">`);
+            $(`#${pair[1].id} .flip-card-back`).html(`<img src="${pair[1].img}" alt="${pair[1].title} by ${pair[1].artist}">`);
             pair[1].title = randomArt.title;
             pair[1].artist = randomArt.artist;
             pair[1].date = randomArt.date;
         };
+        
+        mix.shift();
         resolve();
             }
         );
-    };
+}
 
 function showCards(cards) {
     return new Promise((resolve) => {
@@ -827,8 +773,6 @@ function startGame() {
     startLevel();
 
     $("html").css("cursor", "wait");
-    
-    console.log("Here is your score: ", player.score);
 }
 
 // ------------------ on Load ------   
