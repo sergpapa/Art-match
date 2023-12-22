@@ -35,9 +35,9 @@ The ArtMatch website has been tested manually as well as with automated services
 
 ### *[w3schools CSS Validator](https://jigsaw.w3.org/css-validator/)*
 
-![css-validator]()
+![css-validator](assets/images/for-testing/css-validator.png)
 
-[Back to top](#content
+[Back to top](#contents)
 
 ## **Responsiveness Test**
 
@@ -56,7 +56,6 @@ Responsiveness tests were carried out manually with a combination of device test
 ArtMatch has been tested in multiple browsers with no visible issues. Google Chrome, Mozilla Firefox, Safari, Microsoft Edge.Appearance, functionality and responsiveness were found consistent throughout on a range of device sizes and browsers.
 
 ## **Testing User Stories**
-
 
 [Back to top](#contents)
 
@@ -79,6 +78,6 @@ The website has been tested using [Google Lighthouse](https://developer.chrome.c
   
   An example of the Lighthouse results in the FPC home page is shown below:
 
-  ![Lighthouse-home-page]()
+  ![Lighthouse-home-page](assets/images/for-testing/lighthouse.png)
 
 Back to [README.md](./README.md#testing).
