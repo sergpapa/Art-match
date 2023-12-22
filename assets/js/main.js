@@ -56,7 +56,7 @@ function playTune(tune) {
         $("#soundtrack").prop("volume", 0.2);
         tune.play();
     }
-} 
+}
 
 //    ------------- Cards Database ---------------
 
@@ -80,23 +80,23 @@ let potentialCards = [
         "won": false
     },
     {
-        "id": "", 
-        "title": "Martha's Vineyard 8", 
+        "id": "",
+        "title": "Martha's Vineyard 8",
         "artist": "Aaron Siskind",
         "date": "1947",
         "img": "https://www.artic.edu/iiif/2/049a1323-f24c-fa36-d197-bccee45cee87/full/400,/0/default.jpg",
         "code": "",
         "won": false
-},
+    },
     {
-        "id": "", 
+        "id": "",
         "title": "The Shepherd",
         "artist": "Paulus Potter",
         "date": "1649",
         "img": "https://www.artic.edu/iiif/2/ccf10c35-ea59-995b-28d8-5026d2c0c1f8/full/400,/0/default.jpg",
         "code": "",
         "won": false
-},
+    },
     {
         "id": "",
         "title": "The Courtesans Somenosuke and Kisegawa of the Matsubaya",
@@ -242,7 +242,7 @@ let potentialCards = [
         "won": false
     },
     {
-        "id": "", 
+        "id": "",
         "title": "Pair of Pine Tree Shillings",
         "artist": "John Hull",
         "date": "1682",
@@ -287,7 +287,7 @@ let potentialCards = [
         "won": false
     },
     {
-        "id": "", 
+        "id": "",
         "title": "Design for a Chimney Piece",
         "artist": "Unknown Italian",
         "date": "1799",
@@ -331,7 +331,7 @@ let potentialCards = [
         "code": "",
         "won": false
     }];
-    
+
 let mix = shuffle([...potentialCards]);
 
 //    ------------- Game funcitons ---------------
@@ -340,7 +340,7 @@ function createCards() {
     $("#game").html("");
 
     let loadingMessage =
-    `
+        `
     <div class="box loading">
         <div class="box-inner">
             <h1>Loading <br>
@@ -363,8 +363,8 @@ function createCards() {
         card.artist = "";
         card.date = "";
         card.won = false;
-        card.code = 
-        `
+        card.code =
+            `
         <div id="${card.id}" class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -414,7 +414,7 @@ function createPairs(cards) {
             for (var currentPair of pairs) {
                 // console.log pairs: console.log(currentPair[0].id, currentPair[1].id);
                 promises.push(loadArtwork(currentPair));
-            } 
+            }
         }
         if (cardsTemp.length > 0) {
             let remainder = [cardsTemp[0]];
@@ -447,7 +447,7 @@ function shuffle(array) {       // https://stackoverflow.com/questions/2450954/h
     return array;
 }
 
-function loadArtwork(pair) {   
+function loadArtwork(pair) {
     return new Promise((resolve) => {
         let randomArt = mix[0];
 
@@ -470,11 +470,11 @@ function loadArtwork(pair) {
             pair[1].artist = randomArt.artist;
             pair[1].date = randomArt.date;
         }
-        
+
         mix.shift();
         resolve();
-            }
-        );
+    }
+    );
 }
 
 function showCards(cards) {
@@ -493,8 +493,8 @@ function showCards(cards) {
                         resolve();
                     }
 
-                }, 1500); 
-            }, 2000 * index); 
+                }, 1500);
+            }, 2000 * index);
         });
     });
 }
@@ -554,8 +554,8 @@ function checkPair(choice1, choice2) {
         choice1.won = true;
         choice2.won = true;
 
-        let correctPair = 
-        `
+        let correctPair =
+            `
         <h1>${choice1.title}</h1>
         <div class="details">
             <p>${choice1.artist}</p>
@@ -567,7 +567,7 @@ function checkPair(choice1, choice2) {
         message(correctPair);
 
         player.score += 100;
-        player.win ++;
+        player.win++;
         showScore();
         gameStatus();
         $(".box").on("click", () => game.round = true);
@@ -576,14 +576,14 @@ function checkPair(choice1, choice2) {
         game.round = false;
         playTune(scWrong);
 
-        setTimeout(function () { 
+        setTimeout(function () {
             for (var item of cards) {
                 if (!item.won) {
                     $(`#${item.id}`).children(".flip-card-inner").removeClass("flip");
                     game.round = true;
                 }
             }
-         }, 1000);
+        }, 1000);
         player.lives = player.lives - 1;
         $(`#life-${player.lives}`).hide("slow");
         gameStatus();
@@ -632,8 +632,8 @@ function addToLeaderboard() {
 
     leaderBoard.sort((a, b) => b.score - a.score);
 
-    let rows = 
-    `
+    let rows =
+        `
     `;
 
     leaderBoard.forEach(attempt => {
@@ -665,7 +665,7 @@ function gameStatus() {
             playTune(scGameOver);
 
             let gameOverMessage =
-            `
+                `
             <div class="box">
                 <div class="box-inner">
                 <h1>Game Over</h1>
@@ -677,7 +677,7 @@ function gameStatus() {
                 </form>
                 </div>
             </div>`;
-            
+
             $(".flex-container").append(gameOverMessage);
             $(".box").hide();
             $(".box").fadeIn("slow");
@@ -689,21 +689,21 @@ function gameStatus() {
                     addToLeaderboard(name);
                     $(".box").remove();
                     startGame();
-                    }
                 }
+            }
             );
-        }, 500); 
+        }, 500);
 
-    } else if (player.win >= Math.floor(game.cardCount/2)) {
-        $(".box").on("click", function() {
+    } else if (player.win >= Math.floor(game.cardCount / 2)) {
+        $(".box").on("click", function () {
             setTimeout(function () {
                 message("<h1>You won the level</h1>");
-                game.level ++;
+                game.level++;
                 showLevel();
                 cards = [];
                 player.win = 0;
                 $(".box").on("click", startLevel);
-            }, 500); 
+            }, 500);
         });
     }
 }
@@ -713,12 +713,12 @@ function startLevel() {
     if (game.level > 2 && game.level < 5) {
         game.cardCount = 12;
         //if (screen.width > 825){
-            $(".grid-container").css("grid-template-columns", "auto auto auto auto");
+        $(".grid-container").css("grid-template-columns", "auto auto auto auto");
         //}
     } else if (game.level > 4) {
         game.cardCount = 16;
         //if (screen.width > 825){
-            $(".grid-container").css("grid-template-columns", "auto auto auto auto");
+        $(".grid-container").css("grid-template-columns", "auto auto auto auto");
         //}
     } else {
         game.cardCount = 9;      // should be 9
@@ -730,7 +730,7 @@ function startLevel() {
 
 //    ------------- Always Active ---------------
 
-$("#start-game").on("click", function() {
+$("#start-game").on("click", function () {
     playTune(scSelect);
     startGame();
 });   // press start to begin game
@@ -739,7 +739,7 @@ $("#start-game").on("click", function() {
 $(".sound-toggler-inner").on("click", function () {
     $(".sound-off").toggleClass("no-display");
     $(".sound-on").toggleClass("no-display");
-    
+
     if ($("#soundtrack").prop("muted")) {
         $("#soundtrack").prop("muted", false);
     } else {
