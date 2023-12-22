@@ -167,7 +167,7 @@ The ArtMatch wesite is designed to be simple to navigate and easy to use. It inc
 
   The game includes a sound toggler allowing players to mute or unmute the in-game sounds. This feature enhances the player's experience by providing control over the audio elements.
 
-  ![Sound Toggler]()
+  ![Sound Toggler](assets/images/for-readme/sound-toggler.png)
 
 [Back to top](<#contents>)
 
