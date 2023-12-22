@@ -15,7 +15,8 @@ h2 {
 }
 
 .active:hover {
-    text-decoration-line: overline #efaac4;
+    color: #efaac4;
+    text-decoration-line: overline;
 }
 
 .center {
@@ -414,7 +415,7 @@ label {
 
 .container h1 {
     text-align: center;
-    font-weight: 700px;
+    font-weight: 700;
     font-size: 36px;
 }
 
