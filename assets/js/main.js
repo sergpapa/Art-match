@@ -4,7 +4,7 @@ let game = {
     "level": 1,
     "cardCount": 9,
     "round": false
-}
+};
 
 let cards = [];
 
@@ -14,7 +14,7 @@ let player = {
     "choice2": "",
     "lives": 3,
     "win": 0
-}
+};
 
 
 //    ------------- Music ---------------
@@ -330,7 +330,7 @@ let potentialCards = [
         "img": "https://www.artic.edu/iiif/2/561814c4-4618-8449-a079-6465207298ab/full/400,/0/default.jpg",
         "code": "",
         "won": false
-    }]
+    }];
     
 let mix = shuffle([...potentialCards]);
 
@@ -373,11 +373,11 @@ function createCards() {
                 <div class="flip-card-back">${card.img}</div>
             </div>
         </div>`;
-        cards.push(card)
+        cards.push(card);
     }
 
     let levelLayout = "";
-    for (item of cards) {
+    for (var item of cards) {
         levelLayout = levelLayout + item.code;
     }
     $("#game").html(levelLayout);
@@ -411,7 +411,7 @@ function createPairs(cards) {
             cardsTemp.splice(pair[0], 1);
             cardsTemp.splice(pair[1], 1);
 
-            for (currentPair of pairs) {
+            for (var currentPair of pairs) {
                 // console.log pairs: console.log(currentPair[0].id, currentPair[1].id);
                 promises.push(loadArtwork(currentPair));
             } 
@@ -469,7 +469,7 @@ function loadArtwork(pair) {
             pair[1].title = randomArt.title;
             pair[1].artist = randomArt.artist;
             pair[1].date = randomArt.date;
-        };
+        }
         
         mix.shift();
         resolve();
@@ -515,7 +515,7 @@ function message(message) {
     $(".box").on("click", function () {
         playTune(scSelect);
         $(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
-        game.round = true
+        game.round = true;
     });
 }
 
@@ -563,7 +563,7 @@ function checkPair(choice1, choice2) {
         </div>
         <img src="${choice1.img}" alt="image of ${choice1.title}">
         <h2>+100</h2>
-        `
+        `;
         message(correctPair);
 
         player.score += 100;
@@ -577,7 +577,7 @@ function checkPair(choice1, choice2) {
         playTune(scWrong);
 
         setTimeout(function () { 
-            for (item of cards) {
+            for (var item of cards) {
                 if (!item.won) {
                     $(`#${item.id}`).children(".flip-card-inner").removeClass("flip");
                     game.round = true;
@@ -599,7 +599,7 @@ function showScore() {
         `
         <h2>Score:</h2>
         <h2>${player.score}</h2>`
-    )
+    );
 }
 
 function showLevel() {
@@ -648,7 +648,7 @@ function addToLeaderboard() {
 
     leaderboardTable.append(rows);
 
-    let table = $('#leaderBoard');
+    //let table = $('#leaderBoard');
 
     if ($(`#${name}`)) {
         $(`#${name}`).addClass("active-row");
@@ -676,7 +676,7 @@ function gameStatus() {
                     <button type="button" id="start-new-game">Start New Game</button>
                 </form>
                 </div>
-            </div>`
+            </div>`;
             
             $(".flex-container").append(gameOverMessage);
             $(".box").hide();
@@ -684,12 +684,12 @@ function gameStatus() {
 
             $("form").on("click", function () {
                 if ($("#name").val() !== "") {
-                    console.log($("#name").val())  // check the input value
+                    console.log($("#name").val()); // check the input value
                     let name = $("#name").val();
                     addToLeaderboard(name);
                     $(".box").remove();
                     startGame();
-                    };
+                    }
                 }
             );
         }, 500); 
@@ -704,7 +704,7 @@ function gameStatus() {
                 player.win = 0;
                 $(".box").on("click", startLevel);
             }, 500); 
-        })  
+        });
     }
 }
 
@@ -745,7 +745,7 @@ $(".sound-toggler-inner").on("click", function () {
     } else {
         $("#soundtrack").prop("muted", true);
     }
-})
+});
 
 
 
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (currentPage === 'board.html') {
         addToLeaderboard();
-    };
+    }
 });
 
 // ------------------ Screen Resize ------ 

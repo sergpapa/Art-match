@@ -9,6 +9,8 @@ The ArtMatch website has been tested manually as well as with automated services
   - [**Code Validators**](#code-validators)
     - [*w3schools HTML Validator*](#w3schools-html-validator)
     - [*w3schools CSS Validator*](#w3schools-css-validator)
+    - [*JsHint JavasScript Validator*](#jshint-javasscript-validator)
+  - [**Features Testing**](#features-testing)
   - [**Responsiveness Test**](#responsiveness-test)
   - [**Browser Compatibility**](#browser-compatibility)
   - [**Testing User Stories**](#testing-user-stories)
@@ -37,7 +39,13 @@ The ArtMatch website has been tested manually as well as with automated services
 
 ![css-validator](assets/images/for-testing/css-validator.png)
 
+### *[JsHint JavasScript Validator](https://jshint.com)*
+
+![js-validator](assets/images/for-testing/js-validator.png)
+
 [Back to top](#contents)
+
+## **Features Testing**
 
 ## **Responsiveness Test**
 
