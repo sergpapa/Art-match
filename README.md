@@ -92,7 +92,7 @@ All text on the website is using a variation of the "Amatic SC" font family foun
 
 - *Colour palette*
 
-The color pallete chosen for the website consists of five colors: state grey, lavender pink, pink, misty rose and alabaster.The website is mainly colored with a soothing misty rose background, complemented by playful lavender pink for buttons and messages and pink oor the came cards. State grey provides balanced borders and text, while alabaster adds modern sophistication to details and shapes. This carefully chosen color palette aims to create a visually pleasing and cohesive user interface for an enhanced gaming experience
+The color pallete chosen for the website consists of five colors: state grey, lavender pink, pink, misty rose and alabaster.The website is mainly colored with a soothing misty rose background, complemented by playful lavender pink for buttons and messages and pink oor the came cards. State grey provides balanced borders and text, while alabaster adds modern sophistication to details and shapes. This carefully chosen color palette aims to create a visually pleasing and cohesive user interface for an enhanced gaming experience.
 
 ![ArtMatch - Colour Pallete](assets/images/for-readme/color-pallete.png)
 
@@ -112,6 +112,62 @@ The ArtMatch wesite is designed to be simple to navigate and easy to use. It inc
   - *Navigation Menu*
 
     ![Navigation Menu](assets/images/for-readme/navigation-menu.png)
+
+- ### **Gameplay Features:**
+
+  - *Level Building*
+
+    The game is designed with multiple levels (5), increasing in difficulty every two levels. The number of cards in each level varies, and the layout adapts to the screen size. Levels progress as the player successfully completes the current level.
+
+    ![level building](assets/images/for-readme/start-game.png)
+
+  - *Card Load and Pairing*
+
+    The game dynamically loads cards with artworks from a database. Each card is paired with another, and the player's goal is to match these pairs by clicking on them.
+
+    ![Card Load and Pairing](assets/images/for-readme/flip-cards.png)
+
+  - *Level Progression*
+
+    Upon successfully matching all card pairs in a level, the player advances to the next level. The game adapts the grid layout and increases the difficulty with more cards as the levels progress.
+
+    ![Level Progression](assets/images/for-readme/level.png)
+
+  - *Score Keeping*
+  
+    The player's score is continuously updated based on successful matches. Each correct pair earns the player points, contributing to their overall score.
+
+    ![Score Keeping](assets/images/for-readme/score.png)
+
+  - *Lives Tracking*
+  
+    The player starts with a set number of lives. Incorrect matches result in the deduction of a life. When lives reach zero, the game ends.
+
+    ![Lives Tracking](assets/images/for-readme/lives.png)
+
+  - *Live Updates*
+
+    The player receives real-time updates on their score, the current level, and the number of lives remaining. Messages appear at significant events, such as completing a level or losing a life.
+
+    ![Live Updates](assets/images/for-readme/find-pair.png)
+
+- ### **Rules**
+  
+  The website includes a dedicated page explaining the rules and interactions of the game.
+
+  ![rules-page](assets/images/for-readme/rules.png)
+  
+- ### **Leaderboard**
+  
+  Players are able to log in their desired username and store their scores in their browser memory, invoking  the motive for a user to compete and surpass their previous achievements.
+
+  ![leaderboard](assets/images/for-readme/leaderboard.png)
+  
+- ### **Sound Toggle**
+
+  The game includes a sound toggler allowing players to mute or unmute the in-game sounds. This feature enhances the player's experience by providing control over the audio elements.
+
+  ![Sound Toggler]()
 
 [Back to top](<#contents>)
 
