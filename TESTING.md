@@ -79,6 +79,12 @@ The ArtMatch website has been tested manually as well as with automated services
     Testing - Tested the feature manually by playing the game and testing if lives are lost if a player makes an error. At 0 health the game is over.
     Result - The feature acted as expected and lives tracking works successfully.
 
+- ### **Rules**
+  
+  Expected - Feature is expected to show the rules of the game to the user so they can understand how to play the game.
+  Testing - Tested the feature manually by accessing the rules page.
+  Result - The feature acted as expected and score and the rules are displaying normally.
+
 ## **Responsiveness Test**
 
 Responsiveness tests were carried out manually with a combination of device testing and [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools/).
