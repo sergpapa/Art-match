@@ -723,7 +723,7 @@ function startLevel() {
         $(".grid-container").css("grid-template-columns", "auto auto auto auto");
         //}
     } else {
-        game.cardCount = 9; 
+        game.cardCount = 9;
     }
 
     windowResize();
@@ -757,7 +757,7 @@ $(".sound-toggler-inner").on("click", () =>
 //    ------------- Start ---------------
 
 function startGame() {
-    $("#start-game").addClass("no-display");    
+    $("#start-game").addClass("no-display");
 
     game.level = 1;
     cards = [];
