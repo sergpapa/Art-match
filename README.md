@@ -6,7 +6,7 @@ ArtMatch is a single-player memory game! Immerse yourself in the world of art as
 
 *Welcome to [ArtMatch](https://8000-sergpapa-art-match-phmaf57uyd.us2.codeanyapp.com/index.html)*
 
-![ArtMatch mockup]()
+![ArtMatch mockup](assets/images/for-readme/ArtMatch-mockup.png)
 
 # **Contents**
 

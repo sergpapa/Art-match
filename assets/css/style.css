@@ -9,16 +9,6 @@ h2 {
     color: #6b717e;
 }
 
-.active {
-    text-decoration-line: overline;
-    font-weight: 700;
-}
-
-.active:hover {
-    color: #efaac4;
-    text-decoration-line: overline;
-}
-
 .center {
     top: 50%;
     left: 50%;
@@ -136,6 +126,11 @@ nav {
 .list-item a:hover {
     color: #efaac4;
     text-decoration: overline #efaac4;
+}
+
+.active a {
+    text-decoration-line: overline;
+    font-weight: 700;
 }
 
 /* ------------------- Sound toggler */
