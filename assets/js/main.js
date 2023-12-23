@@ -479,23 +479,25 @@ function loadArtwork(pair) {
 
 function showCards(cards) {
     return new Promise((resolve) => {
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                $(`#${card.id} .flip-card-inner`).addClass("flip");
-                playTune(scFlip);
-
+        setTimeout(() => {
+            cards.forEach((card, index) => {
                 setTimeout(() => {
-                    //$(`#${card.id}`).removeClass("flip");
-                    $(`#${card.id} .flip-card-inner`).removeClass("flip");
+                    $(`#${card.id} .flip-card-inner`).addClass("flip");
                     playTune(scFlip);
 
-                    if (index === cards.length - 1) {
-                        resolve();
-                    }
+                    setTimeout(() => {
 
-                }, 1500);
-            }, 2000 * index);
-        });
+                        $(`#${card.id} .flip-card-inner`).removeClass("flip");
+                        playTune(scFlip);
+
+                        if (index === cards.length - 1) {
+                            resolve();
+                        }
+
+                    }, 1500);
+                }, 2000 * index);
+            });
+        }, 500);
     });
 }
 
