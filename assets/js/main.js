@@ -723,7 +723,7 @@ function startLevel() {
         $(".grid-container").css("grid-template-columns", "auto auto auto auto");
         //}
     } else {
-        game.cardCount = 9;      // should be 9
+        game.cardCount = 9; 
     }
 
     windowResize();
@@ -749,14 +749,15 @@ $(".sound-toggler-inner").on("click", function () {
     }
 });
 
+$(".sound-toggler-inner").on("click", () =>
+    $("#soundtrack").trigger('play').prop("volume", 0.2)
+);
 
 
 //    ------------- Start ---------------
 
 function startGame() {
-    $("#start-game").addClass("no-display");
-    $("#soundtrack").trigger('play');
-    $("#soundtrack").prop("volume", 0.2);
+    $("#start-game").addClass("no-display");    
 
     game.level = 1;
     cards = [];
@@ -796,7 +797,7 @@ function windowResize() {
         document.getElementById("game").style.gridTemplateColumns = "auto auto auto";
     }
 
-    window.addEventListener("resize", (event) => {
+    window.addEventListener("resize", () => {
         if (window.innerWidth > 823 && game.cardCount > 10) {
             document.getElementById("game").style.gridTemplateColumns = "auto auto auto auto";
         } else {

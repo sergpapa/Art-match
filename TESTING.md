@@ -14,6 +14,8 @@ The ArtMatch website has been tested manually as well as with automated services
   - [**Responsiveness Test**](#responsiveness-test)
   - [**Browser Compatibility**](#browser-compatibility)
   - [**Testing User Stories**](#testing-user-stories)
+    - [**As a player, I want**](#as-a-player-i-want)
+    - [**As a parent of a minor playing the game, I want**](#as-a-parent-of-a-minor-playing-the-game-i-want)
   - [**Known Bugs**](#known-bugs)
     - [**Resolved**](#resolved)
   - [**Additional Testing**](#additional-testing)
@@ -101,7 +103,47 @@ Responsiveness tests were carried out manually with a combination of device test
 
 ArtMatch has been tested in multiple browsers with no visible issues. Google Chrome, Mozilla Firefox, Safari, Microsoft Edge.Appearance, functionality and responsiveness were found consistent throughout on a range of device sizes and browsers.
 
+[Back to top](#contents)
+
 ## **Testing User Stories**
+
+### **As a player, I want**
+
+- intuitive controls that are easily accessible and comprehensible, so that I can have a seamless gaming experience across all devices.
+  - *Controls have been designed with simplicity in mind, ensuring easy accessibility (only mouse click is needed).*
+  - *Controls are consistent across different platforms, providing a uniform experience.*
+- clear and easily understandable game rules, so that I can have a concise overview of how to engage with the game effectively.
+  - *Game rules are presented in a concise and user-friendly manner. There is a drles page dedicated to this goal.*
+- a user interface with user-friendly buttons and controls designed for effortless navigation, so that I can enjoy the game on various devices.
+  - *The user interface is designed with easy navigation in mind. There are three pages always visible in the navigation menu for easy access to all features of the webpage*
+  - *Buttons and controls are appropriately sized and placed for optimal usability.*
+- an immersive audio-visual experience with captivating sound and visual effects, so that I can enhance my gameplay and receive feedback on in-game events.
+  - *Visualsmessages and/or sound effects are incorporated for an engaging experience.*
+  - *Visual and auditory feedback is provided for in-game events and actions.*
+- a quick game restart option with a dedicated button, so that I can initiate a new game promptly without unnecessary wait times.
+  - *A dedicated button for quick game restart is implemented.*
+  - *Restarting the game is a swift and straightforward process.*
+- to track my progress with real-time scores, level progression, and mistakes made, so that I can be aware of my performance and game advancement.
+  - *Real-time scoring is displayed during gameplay.*
+  - *Level progression and mistakes are tracked and visible to the player.*
+- informative details about encountered paintings, so that I can gain educational benefits and enhance my art appreciation while playing.
+  - *Educational information about each painting is displayed during gameplay.*
+- a leaderboard feature to showcase top scores, so that I can be motivated to compete and surpass my own achievements.
+  - *A leaderboard is implemented as a dedicated page to display top scores.*
+  - *Players can see their own position on the leaderboard.*
+  
+### **As a parent of a minor playing the game, I want**
+
+- the game to have an educational scope, so that my child can learn about art while playing.
+  - *Educational content is age-appropriate and aligned with art appreciation.*
+  - *Learning elements are seamlessly integrated into gameplay.*
+- a functional and visually appealing game, so that my child can enjoy playing.
+  - *The game has a visually appealing design suitable for children.*
+- a mute button in the game, so that my child can play without disturbing others with noises.
+  - *A mute button is provided to disable in-game sounds.*
+  - *Sound settings are easily accessible and visible at all times*
+- a game that provides a safe and secure environment for my child to play.
+  - *Implement age-appropriate content and features.*
 
 [Back to top](#contents)
 
