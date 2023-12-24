@@ -91,8 +91,9 @@ The ArtMatch website has been tested manually as well as with automated services
 |---------|-------------|----------------------|------------|
 |  Buttons |   Pass      |       Pass           |  Pass      |  
 |  Links  |   Pass      |       Pass           |  Pass      |
-|  img  |   Pass      |       Pass           |  Pass      |
-|  nav links | Pass  | Pass | Pass |
+|  Images  |   Pass      |       Pass           |  Pass      |
+|  Nav Links | Pass  | Pass | Pass |
+|  Sound Toggler | Pass  | Pass | Pass |
 
 ## **Responsiveness Test**
 
