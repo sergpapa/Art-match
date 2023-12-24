@@ -51,40 +51,40 @@ The ArtMatch website has been tested manually as well as with automated services
 
 - ### Navigation Menu
   
-  Expected - Feature is expected to redirect to the various website pages.
-  Testing - Tested the feature by clicking each link manually and examining the result.
+  Expected - Feature is expected to redirect to the various website pages.\
+  Testing - Tested the feature by clicking each link manually and examining the result.\
   Result - The feature acted as expected and redirected to other pages
 
 - ### Gameplay features
   
   - *Level Building and Level Progression*
   
-    Expected - Feature is expected to keep track of the levels and build new levels when user wins one.
-    Testing - Tested the feature by manually playing the game to check the feature's effectiveness. Additionaly, tested by changing the level count directly through the game.level key on the game object.
+    Expected - Feature is expected to keep track of the levels and build new levels when user wins one.\
+    Testing - Tested the feature by manually playing the game to check the feature's effectiveness. Additionaly, tested by changing the level count directly through the game.level key on the game object.\
     Result - The feature acted as expected and created levels normally.
   
   - *Card Load and Pairing*
   
-    Expected - Feature is expected to connect cards together and load images from the database on thir back sides.
-    Testing - Tested the feature manually by checking site response and on Dev Tools by console.log the card pairs and their img elements.
+    Expected - Feature is expected to connect cards together and load images from the database on their back sides.\
+    Testing - Tested the feature manually by checking site response and on Dev Tools by console.log the card pairs and their img elements.\
     Result - The feature acted as expected and connected the cards successfully.
 
   - *Score Keeping and Leaderboard*
   
-    Expected - Feature is expected to keep track of the user's score and updated the leaderboard accordinglly.
-    Testing - Tested the feature manually by playing the game and checking score und leaderboard updates.
+    Expected - Feature is expected to keep track of the user's score and update the leaderboard accordinglly.\
+    Testing - Tested the feature manually by playing the game and checking score and leaderboard updates.\
     Result - The feature acted as expected and score and leaderboard are displaying normally.
 
   - *Lives Tracking*
   
-    Expected - Feature is expected to keep track of the user's lives and act as a game over trigger.
-    Testing - Tested the feature manually by playing the game and testing if lives are lost if a player makes an error. At 0 health the game is over.
+    Expected - Feature is expected to keep track of the user's lives and act as a game over trigger.\
+    Testing - Tested the feature manually by playing the game and testing if lives are lost if a player makes an error. At 0 health the game is over.\
     Result - The feature acted as expected and lives tracking works successfully.
 
 - ### **Rules**
   
-  Expected - Feature is expected to show the rules of the game to the user so they can understand how to play the game.
-  Testing - Tested the feature manually by accessing the rules page.
+  Expected - Feature is expected to show the rules of the game to the user so they can understand how to play the game.\
+  Testing - Tested the feature manually by accessing the rules page.\
   Result - The feature acted as expected and score and the rules are displaying normally.
 
 ## **Responsiveness Test**
@@ -113,12 +113,12 @@ ArtMatch has been tested in multiple browsers with no visible issues. Google Chr
   - *Controls have been designed with simplicity in mind, ensuring easy accessibility (only mouse click is needed).*
   - *Controls are consistent across different platforms, providing a uniform experience.*
 - clear and easily understandable game rules, so that I can have a concise overview of how to engage with the game effectively.
-  - *Game rules are presented in a concise and user-friendly manner. There is a drles page dedicated to this goal.*
+  - *Game rules are presented in a concise and user-friendly manner. There is a rules page dedicated to this goal.*
 - a user interface with user-friendly buttons and controls designed for effortless navigation, so that I can enjoy the game on various devices.
   - *The user interface is designed with easy navigation in mind. There are three pages always visible in the navigation menu for easy access to all features of the webpage*
   - *Buttons and controls are appropriately sized and placed for optimal usability.*
 - an immersive audio-visual experience with captivating sound and visual effects, so that I can enhance my gameplay and receive feedback on in-game events.
-  - *Visualsmessages and/or sound effects are incorporated for an engaging experience.*
+  - *Visual messages and/or sound effects are incorporated for an engaging experience.*
   - *Visual and auditory feedback is provided for in-game events and actions.*
 - a quick game restart option with a dedicated button, so that I can initiate a new game promptly without unnecessary wait times.
   - *A dedicated button for quick game restart is implemented.*
@@ -148,6 +148,10 @@ ArtMatch has been tested in multiple browsers with no visible issues. Google Chr
 [Back to top](#contents)
 
 ## **Known Bugs**
+
+- Sound stops when moving through pages. Based on comments found on [Stack Overflow]() there is n
+
+![Satck overflow audio comment](assets/images/for-testing/audio-bug.png)
 
 ### **Resolved**
 
