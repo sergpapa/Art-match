@@ -149,11 +149,42 @@ ArtMatch has been tested in multiple browsers with no visible issues. Google Chr
 
 ## **Known Bugs**
 
-- Sound stops when moving through pages. Based on comments found on [Stack Overflow]() there is n
+- Sound stops when moving through pages. Based on comments found on [Stack Overflow](https://stackoverflow.com/questions/44629658/audio-continuously-playing-across-all-pages) there is no way to keep ahe playback consistent if the project consists of more than one page.
 
 ![Satck overflow audio comment](assets/images/for-testing/audio-bug.png)
 
+- Initially the game was meant to be connected to the [Art Institute of Chicago Public API](https://api.artic.edu/docs/) and load random images from there to till the cards. Due to certain difficulties:
+  - Loading time of cards was too long (around 15sec) for a simple web game.
+  - Error handling was problematic. Many images did not have the required permissions and kept throwing 403 and 404 errors. Attempted to add error handling but it did not seem to work correctly.
+  - Images loaded were not always age appropriate. Considering the scope of the project, there was no way of testing for image appropriateness.
+  
+  For these reasons, the project was decided to not include the API calls but instead work on manually selected images from the Institute witch specified URLs.
+
 ### **Resolved**
+
+- Flip cards that were correctly identified, could still be clicked and act as choices for future player moves, which introduced a variety of bugs (score keeping, lives tracking, player moves, won cards being flipped back).
+  - The issue was resolved by introducing the clickedCard variable, which targets the card that the player clicked and testing their "won" key. If found false, only then the card can be considered a valid choice and count as a player move.
+  
+```javascript
+$(".flip-card").on("click", function () {
+        if (game.round) {
+            $(this).children(".flip-card-inner").addClass("flip");
+
+            let clickedCard = cards.find(card => card.id === this.id);
+
+            if (player.choice1 === "" && clickedCard.won === false) {
+                playTune(scSelect);
+                player.choice1 = this.id;
+            } else if (player.choice2 === "" && clickedCard.won === false && player.choice1 !== clickedCard.id) {
+                player.choice2 = this.id;
+            }
+
+            if (player.choice1 !== "" && player.choice2 !== "") {
+                checkPair(player.choice1, player.choice2);
+            }
+        }
+    });
+```
 
 [Back to top](#contents)
 

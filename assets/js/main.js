@@ -46,7 +46,7 @@ scWinLevel.preload = 'auto';
 scWinLevel.volume = 0.2;
 
 var scSoundtrack = new Audio();
-scSoundtrack.src = "assets/tunes/glossy-Coma-Media.mp3";  // soundtrack from https://pixabay.com/music/
+scSoundtrack.src = "assets/tunes/glossy-Coma-Media.mp3";
 scSoundtrack.preload = 'auto';
 scSoundtrack.loop = true;
 scSoundtrack.volume = 0.2;
@@ -383,7 +383,7 @@ function createCards() {
     $("#game").html(levelLayout);
 
     if (screen.width < 825 && game.level > 4) {
-        $("#card-15").addClass("small-screen");    // move last card to the middle if screen size is small
+        $("#card-15").addClass("small-screen");
     }
 
     createPairs(cards).then(() => {
@@ -412,7 +412,6 @@ function createPairs(cards) {
             cardsTemp.splice(pair[1], 1);
 
             for (var currentPair of pairs) {
-                // console.log pairs: console.log(currentPair[0].id, currentPair[1].id);
                 promises.push(loadArtwork(currentPair));
             }
         }
@@ -429,17 +428,13 @@ function createPairs(cards) {
     });
 }
 
-function shuffle(array) {       // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(array) {
     let currentIndex = array.length, randomIndex;
 
-    // While there remain elements to shuffle.
     while (currentIndex > 0) {
-
-        // Pick a remaining element.
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
-        // And swap it with the current element.
         [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];
     }
@@ -516,7 +511,7 @@ function message(message) {
     $(".box").fadeIn("slow");
     $(".box").on("click", function () {
         playTune(scSelect);
-        $(".box").fadeOut(300, function () { $(this).remove(); }); // https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery
+        $(".box").fadeOut(300, function () { $(this).remove(); }); 
         game.round = true;
     });
 }
@@ -528,7 +523,7 @@ function playerMove() {
         if (game.round) {
             $(this).children(".flip-card-inner").addClass("flip");
 
-            let clickedCard = cards.find(card => card.id === this.id);   // fixed issue with flipped cards counting again as choices
+            let clickedCard = cards.find(card => card.id === this.id);
 
             if (player.choice1 === "" && clickedCard.won === false) {
                 playTune(scSelect);
@@ -627,7 +622,7 @@ function addToLeaderboard() {
         let key = localStorage.key(i);
         let item = {
             name: key,
-            score: parseInt(localStorage.getItem(key)) // Parse score as an integer
+            score: parseInt(localStorage.getItem(key)) 
         };
         leaderBoard.push(item);
     }
@@ -686,7 +681,6 @@ function gameStatus() {
 
             $("form").on("click", function () {
                 if ($("#name").val() !== "") {
-                    console.log($("#name").val()); // check the input value
                     let name = $("#name").val();
                     addToLeaderboard(name);
                     $(".box").remove();
@@ -714,14 +708,10 @@ function startLevel() {
 
     if (game.level > 2 && game.level < 5) {
         game.cardCount = 12;
-        //if (screen.width > 825){
         $(".grid-container").css("grid-template-columns", "auto auto auto auto");
-        //}
     } else if (game.level > 4) {
         game.cardCount = 16;
-        //if (screen.width > 825){
         $(".grid-container").css("grid-template-columns", "auto auto auto auto");
-        //}
     } else {
         game.cardCount = 9;
     }
@@ -735,7 +725,7 @@ function startLevel() {
 $("#start-game").on("click", function () {
     playTune(scSelect);
     startGame();
-});   // press start to begin game
+});
 
 
 $(".sound-toggler-inner").on("click", function () {

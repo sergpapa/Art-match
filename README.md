@@ -4,7 +4,7 @@
 
 ArtMatch is a single-player memory game! Immerse yourself in the world of art as you challenge your memory to identify pairs of art pieces from the [Art Institute of Chicago](https://www.artic.edu).
 
-*Welcome to [ArtMatch](https://8000-sergpapa-art-match-phmaf57uyd.us2.codeanyapp.com/index.html)*
+*Welcome to [ArtMatch](https://sergpapa.github.io/Art-match/)*
 
 ![ArtMatch mockup](assets/images/for-readme/ArtMatch-mockup.png)
 
@@ -58,7 +58,7 @@ ArtMatch is a single-player memory game! Immerse yourself in the world of art as
 
 ## **Wireframes**
 
-The wireframes for ArtMatch were produced in [Balsamiq](https://balsamiq.com). Inclued below, frames can be found for all distinct pages (home, plans, gallery, contact) in desktop, mobile and tablet view as they were initially envisioned.
+The wireframes for ArtMatch were produced in [Balsamiq](https://balsamiq.com). Inclued below, frames can be found for all distinct pages (home, rules, board) in desktop, mobile and tablet view as they were initially envisioned.
 
 - *Home Page General:*
 
@@ -80,7 +80,7 @@ The wireframes for ArtMatch were produced in [Balsamiq](https://balsamiq.com). I
 
 ## **Site Structure**
 
-The site consists of four pages with the main landing page being the [home page](https://sergpapa.github.io/Art-match/) where the user can play the game. Additionaly, there are the [rules page](https://sergpapa.github.io/Art-match/rules.html) and [board page](https://sergpapa.github.io/Art-match/board.html).
+The site consists of three pages with the main landing page being the [home page](https://sergpapa.github.io/Art-match/) where the user can play the game. Additionaly, there are the [rules page](https://sergpapa.github.io/Art-match/rules.html) and [board page](https://sergpapa.github.io/Art-match/board.html).
 
 [Back to top](<#contents>)
 
@@ -92,7 +92,7 @@ All text on the website is using a variation of the "Amatic SC" font family foun
 
 - *Colour palette*
 
-The color pallete chosen for the website consists of five colors: state grey, lavender pink, pink, misty rose and alabaster.The website is mainly colored with a soothing misty rose background, complemented by playful lavender pink for buttons and messages and pink oor the came cards. State grey provides balanced borders and text, while alabaster adds modern sophistication to details and shapes. This carefully chosen color palette aims to create a visually pleasing and cohesive user interface for an enhanced gaming experience.
+The color pallete chosen for the website consists of five colors: state grey, lavender pink, pink, misty rose and alabaster.The website is mainly colored with a soothing misty rose background, complemented by playful lavender pink for buttons and messages and pink color the game cards. State grey provides balanced borders and text, while alabaster adds modern sophistication to details and shapes. This carefully chosen color palette aims to create a visually pleasing and cohesive user interface for an enhanced gaming experience.
 
 ![ArtMatch - Colour Pallete](assets/images/for-readme/color-pallete.png)
 
@@ -106,8 +106,8 @@ The ArtMatch wesite is designed to be simple to navigate and easy to use. It inc
 
 - ### **Navigation Menu**
 
-    Can be found on the header of all pages of the websites below the logo. Makes navigation through pages easy and intuitive.
-    The navigation manu is fully responsive to accomodate users of all decvces. The active page is always overlined. Any other manu item is overlined and turned to lavender pink when hovered over with the mouse to increase usability.
+    Can be found on the header of all pages of the website pages below the logo. Makes navigation through pages easy and intuitive.
+    The navigation menu is fully responsive to accomodate users of all decvces. The active page is always overlined. Any other manu item is overlined and turned to lavender pink when hovered over with the mouse to increase usability.
 
   - *Navigation Menu*
 
@@ -173,9 +173,10 @@ The ArtMatch wesite is designed to be simple to navigate and easy to use. It inc
 
 ## **Future Features**
 
-- Implementing the public API of the [Art Institute of Chicago API](https://api.artic.edu/docs/) and laod a random art piece each time.
+- Implementing the public API of the [Art Institute of Chicago](https://api.artic.edu/docs/) and laod a random art piece each time.
   - This feature was initially intended to be part of the game,but due to long waiting times for the requests to be fulfilled, the feature was left for a future update.
-- Universal Leaderboard. At the moment, sicne the game is not connected to a database, the leaderboard functinality is limited to storing scores in the browser memory. Each player can access previous scores if logged in from the same decvce, but players are not able to see other users' scores yet.
+- Universal Leaderboard.
+  - At the moment, sicne the game is not connected to a database, the leaderboard functinality is limited to storing scores in the browser memory. Each player can access previous scores if logged in from the same decvce, but players are not able to see other users' scores yet.
   
 [Back to top](<#contents>)
 
@@ -183,6 +184,7 @@ The ArtMatch wesite is designed to be simple to navigate and easy to use. It inc
 
 - [HTML5](https://html.spec.whatwg.org) - content and structure of the website
 - [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) - styling
+- [JavaScript](https://www.w3schools.com/js/) - functionality
 - [Balsamiq](https://balsamiq.com) - wireframes
 - [GitHub](https://github.com) - Hosting and storing
 - [Codeanywhere](https://codeanywhere.com) - coding workspace
@@ -244,8 +246,12 @@ To clone this project from GitHub to your local environment, follow these steps:
 - Logo: [LOGO](https://logo.com)
 - Wireframes: [Balsamiq](https://balsamiq.com)
 - Flip cards: [w3schools](https://www.w3schools.com)
+- Shuffle: [Stack Overflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+- Tables: [Dev.to](https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l)
+- Remove element slow: [Stack Overflow](https://stackoverflow.com/questions/1807187/how-to-remove-an-element-slowly-with-jquery)
 - Image Editing: [GIMP 2.10.34](https://www.gimp.org)
 - Color Palette: [Coolors](https://coolors.co)
+- Music: [Pixabay - Coma Media](https://pixabay.com/music/), [Free SFX](https://freesfx.co.uk/Default.aspx)
 
 [Back to top](<#contents>)
 
