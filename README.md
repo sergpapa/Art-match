@@ -92,7 +92,7 @@ All text on the website is using a variation of the "Amatic SC" font family foun
 
 - *Colour palette*
 
-The color pallete chosen for the website consists of five colors: state grey, lavender pink, pink, misty rose and alabaster.The website is mainly colored with a soothing misty rose background, complemented by playful lavender pink for buttons and messages and pink color the game cards. State grey provides balanced borders and text, while alabaster adds modern sophistication to details and shapes. This carefully chosen color palette aims to create a visually pleasing and cohesive user interface for an enhanced gaming experience.
+The color pallete chosen for the website consists of five colors: state grey, lavender pink, pink, misty rose and alabaster.The website is mainly colored with a soothing misty rose background, complemented by playful lavender pink for buttons and messages and pink color for the game cards. State grey provides balanced borders and text, while alabaster adds modern sophistication to details and shapes. This carefully chosen color palette aims to create a visually pleasing and cohesive user interface for an enhanced gaming experience.
 
 ![ArtMatch - Colour Pallete](assets/images/for-readme/color-pallete.png)
 
